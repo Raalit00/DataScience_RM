@@ -98,7 +98,7 @@
         <parameter key="except_block_type" value="value_matrix_row_start"/>
         <parameter key="invert_selection" value="true"/>
         <parameter key="include_special_attributes" value="false"/>
-        <parameter key="generic_name_stem" value="Produkt_"/>
+        <parameter key="generic_name_stem" value="Product_"/>
       </operator>
       <operator activated="true" class="generate_copy" compatibility="10.0.000" expanded="true" height="82" name="Copy Column Date" width="90" x="313" y="187">
         <parameter key="attribute_name" value="Date"/>
@@ -170,17 +170,27 @@
       </operator>
       <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (2)" width="90" x="447" y="340">
         <list key="rename attributes">
-          <parameter key="Date_day" value="Day Week"/>
+          <parameter key="Date_day" value="Day_in_week"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="order_attributes" compatibility="10.0.000" expanded="true" height="82" name="Reorder Attributes" width="90" x="581" y="340">
+      <operator activated="true" class="order_attributes" compatibility="10.0.000" expanded="true" height="82" name="Reorder Attributes (2)" width="90" x="581" y="340">
         <parameter key="sort_mode" value="user specified"/>
-        <parameter key="attribute_ordering" value="itemDescription|Date|Day Week|Day|Month|Year|Produkt_1|Produkt_2|Produkt_3|Produkt_4|Produkt_5|Produkt_6|Produkt_7|Produkt_8|Produkt_9|Produkt_10|Produkt_11"/>
+        <parameter key="attribute_ordering" value="Date|Day_in_week|Day|Month|Year|Product_1|Product_2|Product_3|Product_4|Product_5|Product_6|Product_7|Product_8|Product_9|Product_10|Product_11"/>
         <parameter key="use_regular_expressions" value="false"/>
         <parameter key="handle_unmatched" value="append"/>
         <parameter key="sort_direction" value="ascending"/>
+      </operator>
+      <operator activated="true" class="write_csv" compatibility="10.0.000" expanded="true" height="82" name="Write CSV" width="90" x="715" y="340">
+        <parameter key="csv_file" value="C:/Users/Alex_/Desktop/Introduction_Data_Science/Projekt/Groceries_final.csv"/>
+        <parameter key="column_separator" value=";"/>
+        <parameter key="write_attribute_names" value="true"/>
+        <parameter key="quote_nominal_values" value="true"/>
+        <parameter key="format_date_attributes" value="true"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="append_to_file" value="false"/>
+        <parameter key="encoding" value="SYSTEM"/>
       </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Set ID" to_port="example set input"/>
       <connect from_op="Set ID" from_port="example set output" to_op="Aggregate Date + ID" to_port="example set input"/>
@@ -193,8 +203,9 @@
       <connect from_op="Replace - with ." from_port="example set output" to_op="Date als Datum" to_port="example set input"/>
       <connect from_op="Date als Datum" from_port="example set output" to_op="Day in Week" to_port="example set input"/>
       <connect from_op="Day in Week" from_port="example set output" to_op="Rename (2)" to_port="example set input"/>
-      <connect from_op="Rename (2)" from_port="example set output" to_op="Reorder Attributes" to_port="example set input"/>
-      <connect from_op="Reorder Attributes" from_port="example set output" to_port="result 1"/>
+      <connect from_op="Rename (2)" from_port="example set output" to_op="Reorder Attributes (2)" to_port="example set input"/>
+      <connect from_op="Reorder Attributes (2)" from_port="example set output" to_op="Write CSV" to_port="input"/>
+      <connect from_op="Write CSV" from_port="through" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
