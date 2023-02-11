@@ -12,7 +12,7 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV" width="90" x="45" y="34">
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV" width="90" x="45" y="85">
         <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\Groceries_final.csv"/>
         <parameter key="column_separators" value=";"/>
         <parameter key="trim_lines" value="false"/>
@@ -55,7 +55,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Einkauf pro Kunde" width="90" x="179" y="34">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Einkauf pro Kunde" width="90" x="179" y="85">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -78,14 +78,14 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename Einkauf pro Kunde" width="90" x="313" y="34">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename Einkauf pro Kunde" width="90" x="313" y="85">
         <list key="rename attributes">
           <parameter key="count(Member_number)" value="Purchase_per_customer"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Statistik Einkauf pro Kunde" width="90" x="447" y="85">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Statistik Einkauf pro Kunde" width="90" x="447" y="136">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -113,7 +113,7 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (2)" width="90" x="45" y="238">
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (2)" width="90" x="45" y="289">
         <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\Groceries_final.csv"/>
         <parameter key="column_separators" value=";"/>
         <parameter key="trim_lines" value="false"/>
@@ -156,7 +156,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="true" class="generate_aggregation" compatibility="10.0.000" expanded="true" height="82" name="Produkte pro Einkauf (3)" width="90" x="179" y="238">
+      <operator activated="true" class="generate_aggregation" compatibility="10.0.000" expanded="true" height="82" name="Produkte pro Einkauf (3)" width="90" x="179" y="289">
         <parameter key="attribute_name" value="Products_per_purchase"/>
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
@@ -176,7 +176,7 @@
         <parameter key="ignore_missings" value="true"/>
         <parameter key="ignore_missing_attributes" value="false"/>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (3)" width="90" x="45" y="340">
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (3)" width="90" x="45" y="391">
         <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\Groceries_final.csv"/>
         <parameter key="column_separators" value=";"/>
         <parameter key="trim_lines" value="false"/>
@@ -219,7 +219,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="true" class="generate_aggregation" compatibility="10.0.000" expanded="true" height="82" name="Produkte pro Einkauf (4)" width="90" x="179" y="340">
+      <operator activated="true" class="generate_aggregation" compatibility="10.0.000" expanded="true" height="82" name="Produkte pro Einkauf (4)" width="90" x="179" y="391">
         <parameter key="attribute_name" value="Products_per_purchase"/>
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
@@ -239,7 +239,7 @@
         <parameter key="ignore_missings" value="true"/>
         <parameter key="ignore_missing_attributes" value="false"/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Statistik Produkte pro Einkauf (2)" width="90" x="313" y="340">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Statistik Produkte pro Einkauf (2)" width="90" x="313" y="391">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -267,6 +267,49 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (4)" width="90" x="45" y="391">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\Groceries_final.csv"/>
+        <parameter key="column_separators" value=";"/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Member_number.true.integer.attribute"/>
+          <parameter key="1" value="Date.true.date.attribute"/>
+          <parameter key="2" value="Day_in_week.true.real.attribute"/>
+          <parameter key="3" value="Day.true.integer.attribute"/>
+          <parameter key="4" value="Month.true.integer.attribute"/>
+          <parameter key="5" value="Year.true.integer.attribute"/>
+          <parameter key="6" value="Product_1.true.polynominal.attribute"/>
+          <parameter key="7" value="Product_2.true.polynominal.attribute"/>
+          <parameter key="8" value="Product_3.true.polynominal.attribute"/>
+          <parameter key="9" value="Product_4.true.polynominal.attribute"/>
+          <parameter key="10" value="Product_5.true.polynominal.attribute"/>
+          <parameter key="11" value="Product_6.true.polynominal.attribute"/>
+          <parameter key="12" value="Product_7.true.polynominal.attribute"/>
+          <parameter key="13" value="Product_8.true.polynominal.attribute"/>
+          <parameter key="14" value="Product_9.true.polynominal.attribute"/>
+          <parameter key="15" value="Product_10.true.polynominal.attribute"/>
+          <parameter key="16" value="Product_11.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
       <connect from_op="Read CSV" from_port="output" to_op="Einkauf pro Kunde" to_port="example set input"/>
       <connect from_op="Einkauf pro Kunde" from_port="example set output" to_op="Rename Einkauf pro Kunde" to_port="example set input"/>
       <connect from_op="Rename Einkauf pro Kunde" from_port="example set output" to_port="result 1"/>
@@ -283,8 +326,9 @@
       <portSpacing port="sink_result 3" spacing="0"/>
       <portSpacing port="sink_result 4" spacing="0"/>
       <portSpacing port="sink_result 5" spacing="0"/>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="388" x="29" y="129">Anzahl der Eink&amp;#228;ufe pro Kunde im gesamten Datensatz;&lt;br&gt;Keine Gruppierung nach Monat/Woche, da zu wenige Daten</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="256" x="314" y="282">Anzahl von Produkten pro Einkauf</description>
+      <portSpacing port="sink_result 6" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="388" x="37" y="29">Anzahl der Eink&amp;#228;ufe pro Kunde im gesamten Datensatz;&lt;br&gt;Keine Gruppierung nach Monat/Woche, da zu wenige Daten</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="257" x="38" y="231">Anzahl von Produkten pro Einkauf</description>
     </process>
   </operator>
 </process>
