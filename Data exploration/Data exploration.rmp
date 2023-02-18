@@ -369,7 +369,7 @@
       </operator>
       <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerHour" width="90" x="179" y="697">
         <list key="function_descriptions">
-          <parameter key="Hours" value="date_str_custom(DateTime, &quot;hh a&quot;)"/>
+          <parameter key="Hours" value="date_str_custom(DateTime, &quot;HH&quot;)"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
@@ -386,6 +386,11 @@
         </list>
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (2)" width="90" x="447" y="697">
+        <list key="sort_by">
+          <parameter key="Hours" value="ascending"/>
+        </list>
       </operator>
       <connect from_op="Read Bakery" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
       <connect from_op="Count TransactionNo" from_port="example set output" to_op="ItemsPerTransaction" to_port="example set input"/>
@@ -406,7 +411,8 @@
       <connect from_op="MostSoldItems" from_port="example set output" to_port="result 4"/>
       <connect from_op="Read Bakery (6)" from_port="output" to_op="TransactionsPerHour" to_port="example set input"/>
       <connect from_op="TransactionsPerHour" from_port="example set output" to_op="Top5Items" to_port="example set input"/>
-      <connect from_op="Top5Items" from_port="example set output" to_port="result 5"/>
+      <connect from_op="Top5Items" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
+      <connect from_op="Sort (2)" from_port="example set output" to_port="result 5"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
