@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.0.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.0.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery" width="90" x="45" y="34">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count TransactionNo" width="90" x="179" y="34">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="TransactionNo" value="count"/>
+        </list>
+        <parameter key="group_by_attributes" value="TransactionNo"/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="false"/>
+        <parameter key="ignore_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="ItemsPerTransaction" width="90" x="313" y="34">
+        <list key="rename attributes">
+          <parameter key="count(TransactionNo)" value="ItemsPerTransaction"/>
+        </list>
+        <parameter key="from_attribute" value=""/>
+        <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (2)" width="90" x="45" y="136">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerMonth" width="90" x="179" y="136">
+        <list key="function_descriptions">
+          <parameter key="DatePerMonth" value="date_str_custom(DateTime, &quot;MM.yyyy&quot;)"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (3)" width="90" x="45" y="238">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="447" y="187">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="DateTime.lt.01/01/2017 7:26:56 PM"/>
+        </list>
+        <parameter key="filters_logic_and" value="true"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical" width="90" x="179" y="238">
+        <parameter key="attribute_name" value="DateTime"/>
+        <parameter key="time_unit" value="day"/>
+        <parameter key="millisecond_relative_to" value="second"/>
+        <parameter key="second_relative_to" value="minute"/>
+        <parameter key="minute_relative_to" value="hour"/>
+        <parameter key="hour_relative_to" value="day"/>
+        <parameter key="day_relative_to" value="week"/>
+        <parameter key="week_relative_to" value="year"/>
+        <parameter key="month_relative_to" value="year"/>
+        <parameter key="quarter_relative_to" value="year"/>
+        <parameter key="half_year_relative_to" value="year"/>
+        <parameter key="year_relative_to" value="era"/>
+        <parameter key="keep_old_attribute" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday" width="90" x="313" y="238">
+        <list key="rename attributes">
+          <parameter key="DateTime_day" value="Weekday"/>
+        </list>
+        <parameter key="from_attribute" value=""/>
+        <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="false" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (4)" width="90" x="45" y="391">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="false" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (2)" width="90" x="179" y="391">
+        <parameter key="attribute_name" value="DateTime"/>
+        <parameter key="time_unit" value="day"/>
+        <parameter key="millisecond_relative_to" value="second"/>
+        <parameter key="second_relative_to" value="minute"/>
+        <parameter key="minute_relative_to" value="hour"/>
+        <parameter key="hour_relative_to" value="day"/>
+        <parameter key="day_relative_to" value="week"/>
+        <parameter key="week_relative_to" value="year"/>
+        <parameter key="month_relative_to" value="year"/>
+        <parameter key="quarter_relative_to" value="year"/>
+        <parameter key="half_year_relative_to" value="year"/>
+        <parameter key="year_relative_to" value="era"/>
+        <parameter key="keep_old_attribute" value="true"/>
+      </operator>
+      <operator activated="false" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (2)" width="90" x="313" y="391">
+        <list key="rename attributes">
+          <parameter key="DateTime_day" value="Weekday"/>
+        </list>
+        <parameter key="from_attribute" value=""/>
+        <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Workweek" width="90" x="447" y="391">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="Weekday.eq.2"/>
+          <parameter key="filters_entry_key" value="Weekday.eq.3"/>
+          <parameter key="filters_entry_key" value="Weekday.eq.4"/>
+          <parameter key="filters_entry_key" value="Weekday.eq.5"/>
+          <parameter key="filters_entry_key" value="Weekday.eq.6"/>
+        </list>
+        <parameter key="filters_logic_and" value="false"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <operator activated="false" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count TransactionNo (2)" width="90" x="581" y="391">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="TransactionNo" value="count"/>
+        </list>
+        <parameter key="group_by_attributes" value=""/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="false"/>
+        <parameter key="ignore_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (5)" width="90" x="45" y="544">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="CountSoldItems" width="90" x="179" y="544">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="Items" value="count"/>
+          <parameter key="Items" value="count (percentage)"/>
+        </list>
+        <parameter key="group_by_attributes" value="Items"/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="false"/>
+        <parameter key="ignore_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort" width="90" x="313" y="544">
+        <list key="sort_by">
+          <parameter key="count(Items)" value="descending"/>
+        </list>
+      </operator>
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename" width="90" x="447" y="544">
+        <list key="rename attributes">
+          <parameter key="count(Items)" value="Count"/>
+          <parameter key="percentage_count(Items)" value="Share"/>
+        </list>
+        <parameter key="from_attribute" value=""/>
+        <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="MostSoldItems" width="90" x="581" y="544">
+        <parameter key="first_example" value="1"/>
+        <parameter key="last_example" value="10"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (6)" width="90" x="45" y="697">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerHour" width="90" x="179" y="697">
+        <list key="function_descriptions">
+          <parameter key="Hours" value="date_str_custom(DateTime, &quot;hh a&quot;)"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items" width="90" x="313" y="697">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="Items.equals.Coffee"/>
+          <parameter key="filters_entry_key" value="Items.equals.Bread"/>
+          <parameter key="filters_entry_key" value="Items.equals.Tea"/>
+          <parameter key="filters_entry_key" value="Items.equals.Cake"/>
+          <parameter key="filters_entry_key" value="Items.equals.Pastry"/>
+        </list>
+        <parameter key="filters_logic_and" value="false"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <connect from_op="Read Bakery" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
+      <connect from_op="Count TransactionNo" from_port="example set output" to_op="ItemsPerTransaction" to_port="example set input"/>
+      <connect from_op="ItemsPerTransaction" from_port="example set output" to_port="result 1"/>
+      <connect from_op="Read Bakery (2)" from_port="output" to_op="TransactionsPerMonth" to_port="example set input"/>
+      <connect from_op="TransactionsPerMonth" from_port="example set output" to_port="result 2"/>
+      <connect from_op="Read Bakery (3)" from_port="output" to_op="DateToNumerical" to_port="example set input"/>
+      <connect from_op="DateToNumerical" from_port="example set output" to_op="Weekday" to_port="example set input"/>
+      <connect from_op="Weekday" from_port="example set output" to_port="result 3"/>
+      <connect from_op="Read Bakery (4)" from_port="output" to_op="DateToNumerical (2)" to_port="example set input"/>
+      <connect from_op="DateToNumerical (2)" from_port="example set output" to_op="Weekday (2)" to_port="example set input"/>
+      <connect from_op="Weekday (2)" from_port="example set output" to_op="Workweek" to_port="example set input"/>
+      <connect from_op="Workweek" from_port="example set output" to_op="Count TransactionNo (2)" to_port="example set input"/>
+      <connect from_op="Read Bakery (5)" from_port="output" to_op="CountSoldItems" to_port="example set input"/>
+      <connect from_op="CountSoldItems" from_port="example set output" to_op="Sort" to_port="example set input"/>
+      <connect from_op="Sort" from_port="example set output" to_op="Rename" to_port="example set input"/>
+      <connect from_op="Rename" from_port="example set output" to_op="MostSoldItems" to_port="example set input"/>
+      <connect from_op="MostSoldItems" from_port="example set output" to_port="result 4"/>
+      <connect from_op="Read Bakery (6)" from_port="output" to_op="TransactionsPerHour" to_port="example set input"/>
+      <connect from_op="TransactionsPerHour" from_port="example set output" to_op="Top5Items" to_port="example set input"/>
+      <connect from_op="Top5Items" from_port="example set output" to_port="result 5"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <portSpacing port="sink_result 5" spacing="0"/>
+      <portSpacing port="sink_result 6" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="199" x="37" y="341">N&amp;#228;chste Reihe ignorieren</description>
+    </process>
+  </operator>
+</process>
