@@ -224,7 +224,7 @@
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="false" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (4)" width="90" x="45" y="1054">
+      <operator activated="false" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (4)" width="90" x="45" y="1513">
         <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
@@ -255,7 +255,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="false" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (2)" width="90" x="179" y="1054">
+      <operator activated="false" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (2)" width="90" x="179" y="1513">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="time_unit" value="day"/>
         <parameter key="millisecond_relative_to" value="second"/>
@@ -270,14 +270,14 @@
         <parameter key="year_relative_to" value="era"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="false" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (2)" width="90" x="313" y="1054">
+      <operator activated="false" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (2)" width="90" x="313" y="1513">
         <list key="rename attributes">
           <parameter key="DateTime_day" value="Weekday"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Workweek" width="90" x="447" y="1054">
+      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Workweek" width="90" x="447" y="1513">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -291,7 +291,7 @@
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="false" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count TransactionNo (2)" width="90" x="581" y="1054">
+      <operator activated="false" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count TransactionNo (2)" width="90" x="581" y="1513">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -474,51 +474,6 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (8)" width="90" x="45" y="850">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
-        <parameter key="column_separators" value=","/>
-        <parameter key="trim_lines" value="false"/>
-        <parameter key="use_quotes" value="true"/>
-        <parameter key="quotes_character" value="&quot;"/>
-        <parameter key="escape_character" value="\"/>
-        <parameter key="skip_comments" value="true"/>
-        <parameter key="comment_characters" value="#"/>
-        <parameter key="starting_row" value="1"/>
-        <parameter key="parse_numbers" value="true"/>
-        <parameter key="decimal_character" value="."/>
-        <parameter key="grouped_digits" value="false"/>
-        <parameter key="grouping_character" value=","/>
-        <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
-        <parameter key="first_row_as_names" value="true"/>
-        <list key="annotations"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="encoding" value="windows-1252"/>
-        <parameter key="read_all_values_as_polynominal" value="false"/>
-        <list key="data_set_meta_data_information">
-          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
-          <parameter key="1" value="Items.true.polynominal.attribute"/>
-          <parameter key="2" value="DateTime.true.date_time.attribute"/>
-          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
-          <parameter key="4" value="DayType.true.polynominal.attribute"/>
-        </list>
-        <parameter key="read_not_matching_values_as_missings" value="true"/>
-      </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (2)" width="90" x="246" y="850">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="false" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal" width="90" x="447" y="901">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value=""/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="false"/>
-      </operator>
       <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (3)" width="90" x="179" y="391">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
@@ -554,7 +509,7 @@
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
-      <operator activated="true" class="read_excel" compatibility="10.0.000" expanded="true" height="68" name="Read Excel" width="90" x="45" y="1156">
+      <operator activated="true" class="read_excel" compatibility="10.0.000" expanded="true" height="68" name="Read Excel" width="90" x="45" y="850">
         <parameter key="excel_file" value="C:/Users/Alex_/Desktop/Introduction_Data_Science/Projekt/DataScience_RM/Data exploration/Bank_Holiday.xlsx"/>
         <parameter key="sheet_selection" value="sheet number"/>
         <parameter key="sheet_number" value="1"/>
@@ -579,7 +534,7 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="10.0.000" expanded="true" height="82" name="Select Attributes" width="90" x="179" y="1156">
+      <operator activated="true" class="select_attributes" compatibility="10.0.000" expanded="true" height="82" name="Select Attributes" width="90" x="179" y="850">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value="Bank holiday|2016.0|2017.0"/>
@@ -593,7 +548,7 @@
         <parameter key="invert_selection" value="false"/>
         <parameter key="include_special_attributes" value="false"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (2)" width="90" x="313" y="1156">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (2)" width="90" x="313" y="850">
         <list key="rename attributes">
           <parameter key="2016.0" value="2016"/>
           <parameter key="2017.0" value="2017"/>
@@ -601,7 +556,7 @@
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples (2)" width="90" x="447" y="1156">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="BankHolidays" width="90" x="447" y="850">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="no_missing_attributes"/>
         <parameter key="invert_filter" value="false"/>
@@ -609,7 +564,7 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="false" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (9)" width="90" x="45" y="1309">
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (9)" width="90" x="45" y="1003">
         <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
@@ -640,18 +595,18 @@
         </list>
         <parameter key="read_not_matching_values_as_missings" value="true"/>
       </operator>
-      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples (3)" width="90" x="179" y="1309">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="DateTimeframe" width="90" x="179" y="1003">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
         <list key="filters_list">
-          <parameter key="filters_entry_key" value="DateTime.gt.11/24/2016 8:47:35 PM"/>
-          <parameter key="filters_entry_key" value="DateTime.lt.12/14/2016 8:48:24 PM"/>
+          <parameter key="filters_entry_key" value="DateTime.gt.12/20/2016 8:47:35 PM"/>
+          <parameter key="filters_entry_key" value="DateTime.lt.12/30/2016 8:48:24 PM"/>
         </list>
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="false" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items (2)" width="90" x="313" y="1309">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items (2)" width="90" x="313" y="1003">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -665,14 +620,14 @@
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="false" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (4)" width="90" x="447" y="1309">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (4)" width="90" x="447" y="1003">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="dd.MM"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="false" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerHour (2)" width="90" x="581" y="1309">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="SortDateChristmas" width="90" x="581" y="1003">
         <list key="sort_by">
           <parameter key="DateTime_nominal" value="ascending"/>
         </list>
@@ -703,20 +658,19 @@
       <connect from_op="Top5Items" from_port="example set output" to_op="TransactionsPerHour" to_port="example set input"/>
       <connect from_op="TransactionsPerHour" from_port="example set output" to_port="result 4"/>
       <connect from_op="Read Bakery (7)" from_port="output" to_op="Date to Nominal (3)" to_port="example set input"/>
-      <connect from_op="Read Bakery (8)" from_port="output" to_op="Date to Nominal (2)" to_port="example set input"/>
-      <connect from_op="Date to Nominal (2)" from_port="example set output" to_port="result 7"/>
       <connect from_op="Date to Nominal (3)" from_port="example set output" to_op="DateToNumerical (3)" to_port="example set input"/>
       <connect from_op="DateToNumerical (3)" from_port="example set output" to_op="Weekday (3)" to_port="example set input"/>
       <connect from_op="Weekday (3)" from_port="example set output" to_op="DayTypeCorrected" to_port="example set input"/>
       <connect from_op="DayTypeCorrected" from_port="example set output" to_port="result 6"/>
       <connect from_op="Read Excel" from_port="output" to_op="Select Attributes" to_port="example set input"/>
       <connect from_op="Select Attributes" from_port="example set output" to_op="Rename (2)" to_port="example set input"/>
-      <connect from_op="Rename (2)" from_port="example set output" to_op="Filter Examples (2)" to_port="example set input"/>
-      <connect from_op="Filter Examples (2)" from_port="example set output" to_port="result 8"/>
-      <connect from_op="Read Bakery (9)" from_port="output" to_op="Filter Examples (3)" to_port="example set input"/>
-      <connect from_op="Filter Examples (3)" from_port="example set output" to_op="Top5Items (2)" to_port="example set input"/>
+      <connect from_op="Rename (2)" from_port="example set output" to_op="BankHolidays" to_port="example set input"/>
+      <connect from_op="BankHolidays" from_port="example set output" to_port="result 8"/>
+      <connect from_op="Read Bakery (9)" from_port="output" to_op="DateTimeframe" to_port="example set input"/>
+      <connect from_op="DateTimeframe" from_port="example set output" to_op="Top5Items (2)" to_port="example set input"/>
       <connect from_op="Top5Items (2)" from_port="example set output" to_op="Date to Nominal (4)" to_port="example set input"/>
-      <connect from_op="Date to Nominal (4)" from_port="example set output" to_op="TransactionsPerHour (2)" to_port="example set input"/>
+      <connect from_op="Date to Nominal (4)" from_port="example set output" to_op="SortDateChristmas" to_port="example set input"/>
+      <connect from_op="SortDateChristmas" from_port="example set output" to_port="result 9"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -728,7 +682,7 @@
       <portSpacing port="sink_result 8" spacing="0"/>
       <portSpacing port="sink_result 9" spacing="0"/>
       <portSpacing port="sink_result 10" spacing="0"/>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="199" x="45" y="975">N&amp;#228;chste Reihe ignorieren</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="199" x="43" y="1446">N&amp;#228;chste Reihe ignorieren</description>
     </process>
   </operator>
 </process>
