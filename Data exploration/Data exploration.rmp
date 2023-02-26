@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery" width="90" x="45" y="34">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -74,7 +74,7 @@
         <parameter key="to_attribute" value=""/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (2)" width="90" x="45" y="136">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -153,7 +153,7 @@
         <parameter key="split_pattern" value="\."/>
         <parameter key="split_mode" value="ordered_split"/>
       </operator>
-      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerMonth (2)" width="90" x="715" y="136">
+      <operator activated="true" breakpoints="after" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerMonth (2)" width="90" x="715" y="136">
         <parameter key="attribute_name" value="Date"/>
         <parameter key="date_type" value="date"/>
         <parameter key="date_format" value="MM.yyyy"/>
@@ -162,7 +162,7 @@
         <parameter key="keep_old_attribute" value="false"/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (3)" width="90" x="45" y="238">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -315,7 +315,7 @@
         <parameter key="ignore_missings" value="true"/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (5)" width="90" x="45" y="544">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -388,7 +388,7 @@
         <parameter key="invert_filter" value="false"/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (6)" width="90" x="45" y="697">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -444,7 +444,7 @@
         </list>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (7)" width="90" x="45" y="391">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -510,7 +510,7 @@
         <parameter key="keep_all" value="true"/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (9)" width="90" x="45" y="1003">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -608,7 +608,7 @@
         <parameter key="to_attribute" value=""/>
       </operator>
       <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (10)" width="90" x="45" y="1207">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="csv_file" value="C:/Users/rahgi/Desktop/Uni-skripte/Master_HDM/Appied DS/DataScience_RM/Data exploration/Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -730,14 +730,14 @@
       <connect from_op="DateTimeframe" from_port="example set output" to_op="Top5Items (2)" to_port="example set input"/>
       <connect from_op="Top5Items (2)" from_port="example set output" to_op="Date to Nominal (4)" to_port="example set input"/>
       <connect from_op="Date to Nominal (4)" from_port="example set output" to_op="SortDateChristmas" to_port="example set input"/>
-      <connect from_op="SortDateChristmas" from_port="example set output" to_port="result 8"/>
+      <connect from_op="SortDateChristmas" from_port="example set output" to_port="result 7"/>
       <connect from_op="Einkauf pro Monat" from_port="example set output" to_op="Einkaufe pro Monat" to_port="example set input"/>
       <connect from_op="Read Bakery (10)" from_port="output" to_op="Generate Copy (2)" to_port="example set input"/>
       <connect from_op="Generate Copy (2)" from_port="example set output" to_op="Date to Nominal" to_port="example set input"/>
       <connect from_op="Date to Nominal" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
       <connect from_op="Nominal to Date" from_port="example set output" to_op="Aggregate (2)" to_port="example set input"/>
       <connect from_op="Aggregate (2)" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
-      <connect from_op="Sort (2)" from_port="example set output" to_port="result 9"/>
+      <connect from_op="Sort (2)" from_port="example set output" to_port="result 8"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -748,7 +748,6 @@
       <portSpacing port="sink_result 7" spacing="0"/>
       <portSpacing port="sink_result 8" spacing="0"/>
       <portSpacing port="sink_result 9" spacing="0"/>
-      <portSpacing port="sink_result 10" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="199" x="43" y="1446">N&amp;#228;chste Reihe ignorieren</description>
     </process>
   </operator>

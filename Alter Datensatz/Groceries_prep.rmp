@@ -12,8 +12,8 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV" width="90" x="45" y="595">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data prep und exploration\Groceries_dataset.csv"/>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (2)" width="90" x="179" y="34">
+        <parameter key="csv_file" value="C:\Users\rahgi\Desktop\Uni-skripte\Master_HDM\Appied DS\DataScience_RM\Data exploration\Bakery.csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -27,7 +27,7 @@
         <parameter key="grouped_digits" value="false"/>
         <parameter key="grouping_character" value=","/>
         <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
         <parameter key="first_row_as_names" value="true"/>
         <list key="annotations"/>
         <parameter key="time_zone" value="SYSTEM"/>
@@ -35,18 +35,20 @@
         <parameter key="encoding" value="windows-1252"/>
         <parameter key="read_all_values_as_polynominal" value="false"/>
         <list key="data_set_meta_data_information">
-          <parameter key="0" value="Member_number.true.integer.attribute"/>
-          <parameter key="1" value="Date.true.polynominal.attribute"/>
-          <parameter key="2" value="itemDescription.true.polynominal.attribute"/>
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
         </list>
-        <parameter key="read_not_matching_values_as_missings" value="true"/>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
       </operator>
-      <operator activated="true" class="set_role" compatibility="10.0.000" expanded="true" height="82" name="Set ID" width="90" x="179" y="595">
-        <parameter key="attribute_name" value="Member_number"/>
+      <operator activated="true" class="set_role" compatibility="10.0.000" expanded="true" height="82" name="Set ID" width="90" x="313" y="34">
+        <parameter key="attribute_name" value="TransactionNo"/>
         <parameter key="target_role" value="id"/>
         <list key="set_additional_roles"/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate Date + ID" width="90" x="313" y="595">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate Date + ID" width="90" x="447" y="34">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -62,16 +64,16 @@
         <parameter key="include_special_attributes" value="false"/>
         <parameter key="default_aggregation_function" value="average"/>
         <list key="aggregation_attributes">
-          <parameter key="itemDescription" value="concatenation"/>
+          <parameter key="Items" value="concatenation"/>
         </list>
-        <parameter key="group_by_attributes" value="Date|Member_number"/>
+        <parameter key="group_by_attributes" value="TransactionNo|DateTime"/>
         <parameter key="count_all_combinations" value="false"/>
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="split" compatibility="10.0.000" expanded="true" height="82" name="Split Products" width="90" x="447" y="595">
+      <operator activated="true" breakpoints="after" class="split" compatibility="10.0.000" expanded="true" height="82" name="Split Products" width="90" x="581" y="34">
         <parameter key="attribute_filter_type" value="single"/>
-        <parameter key="attribute" value="concat(itemDescription)"/>
+        <parameter key="attribute" value="concat(Items)"/>
         <parameter key="attributes" value=""/>
         <parameter key="use_except_expression" value="false"/>
         <parameter key="value_type" value="nominal"/>
@@ -85,10 +87,10 @@
         <parameter key="split_pattern" value="\|"/>
         <parameter key="split_mode" value="ordered_split"/>
       </operator>
-      <operator activated="true" class="rename_by_generic_names" compatibility="10.0.000" expanded="true" height="82" name="Rename Product Columns" width="90" x="581" y="595">
+      <operator activated="true" breakpoints="after" class="rename_by_generic_names" compatibility="10.0.000" expanded="true" height="82" name="Rename Product Columns" width="90" x="715" y="34">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
-        <parameter key="attributes" value="Date|Member_number"/>
+        <parameter key="attributes" value="TransactionNo|DateTime"/>
         <parameter key="use_except_expression" value="false"/>
         <parameter key="value_type" value="attribute_value"/>
         <parameter key="use_value_type_exception" value="false"/>
@@ -100,11 +102,11 @@
         <parameter key="include_special_attributes" value="false"/>
         <parameter key="generic_name_stem" value="Product_"/>
       </operator>
-      <operator activated="true" class="generate_copy" compatibility="10.0.000" expanded="true" height="82" name="Copy Column Date" width="90" x="313" y="748">
-        <parameter key="attribute_name" value="Date"/>
+      <operator activated="true" class="generate_copy" compatibility="10.0.000" expanded="true" height="82" name="Copy Column Date" width="90" x="447" y="187">
+        <parameter key="attribute_name" value="DateTime"/>
         <parameter key="new_name" value="Datesplit"/>
       </operator>
-      <operator activated="true" class="split" compatibility="10.0.000" expanded="true" height="82" name="Split Date" width="90" x="447" y="748">
+      <operator activated="true" class="split" compatibility="10.0.000" expanded="true" height="82" name="Split Date" width="90" x="581" y="187">
         <parameter key="attribute_filter_type" value="single"/>
         <parameter key="attribute" value="Datesplit"/>
         <parameter key="attributes" value=""/>
@@ -120,7 +122,7 @@
         <parameter key="split_pattern" value="-"/>
         <parameter key="split_mode" value="ordered_split"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename" width="90" x="581" y="748">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename" width="90" x="715" y="187">
         <list key="rename attributes">
           <parameter key="Datesplit_1" value="Day"/>
           <parameter key="Datesplit_2" value="Month"/>
@@ -129,7 +131,7 @@
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="replace" compatibility="10.0.000" expanded="true" height="82" name="Replace - with ." width="90" x="45" y="901">
+      <operator activated="true" class="replace" compatibility="10.0.000" expanded="true" height="82" name="Replace - with ." width="90" x="179" y="340">
         <parameter key="attribute_filter_type" value="single"/>
         <parameter key="attribute" value="Date"/>
         <parameter key="attributes" value=""/>
@@ -145,7 +147,7 @@
         <parameter key="replace_what" value="-"/>
         <parameter key="replace_by" value="."/>
       </operator>
-      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Date als Datum" width="90" x="179" y="901">
+      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Date als Datum" width="90" x="313" y="340">
         <parameter key="attribute_name" value="Date"/>
         <parameter key="date_type" value="date"/>
         <parameter key="date_format" value="dd.MM.yyyy"/>
@@ -153,7 +155,7 @@
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="false"/>
       </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="Day in Week" width="90" x="313" y="901">
+      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="Day in Week" width="90" x="447" y="340">
         <parameter key="attribute_name" value="Date"/>
         <parameter key="time_unit" value="day"/>
         <parameter key="millisecond_relative_to" value="second"/>
@@ -168,21 +170,21 @@
         <parameter key="year_relative_to" value="era"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (2)" width="90" x="447" y="901">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (2)" width="90" x="581" y="340">
         <list key="rename attributes">
           <parameter key="Date_day" value="Day_in_week"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="order_attributes" compatibility="10.0.000" expanded="true" height="82" name="Reorder Attributes (2)" width="90" x="581" y="901">
+      <operator activated="true" class="order_attributes" compatibility="10.0.000" expanded="true" height="82" name="Reorder Attributes (2)" width="90" x="715" y="340">
         <parameter key="sort_mode" value="user specified"/>
         <parameter key="attribute_ordering" value="Date|Day_in_week|Day|Month|Year|Product_1|Product_2|Product_3|Product_4|Product_5|Product_6|Product_7|Product_8|Product_9|Product_10|Product_11"/>
         <parameter key="use_regular_expressions" value="false"/>
         <parameter key="handle_unmatched" value="append"/>
         <parameter key="sort_direction" value="ascending"/>
       </operator>
-      <operator activated="true" class="write_csv" compatibility="10.0.000" expanded="true" height="82" name="Write CSV" width="90" x="715" y="901">
+      <operator activated="true" class="write_csv" compatibility="10.0.000" expanded="true" height="82" name="Write CSV" width="90" x="849" y="340">
         <parameter key="csv_file" value="C:/Users/Alex_/Desktop/Introduction_Data_Science/Projekt/Groceries_final.csv"/>
         <parameter key="column_separator" value=";"/>
         <parameter key="write_attribute_names" value="true"/>
@@ -192,153 +194,7 @@
         <parameter key="append_to_file" value="false"/>
         <parameter key="encoding" value="SYSTEM"/>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (2)" width="90" x="45" y="85">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data prep und exploration\Groceries_dataset.csv"/>
-        <parameter key="column_separators" value=","/>
-        <parameter key="trim_lines" value="false"/>
-        <parameter key="use_quotes" value="true"/>
-        <parameter key="quotes_character" value="&quot;"/>
-        <parameter key="escape_character" value="\"/>
-        <parameter key="skip_comments" value="true"/>
-        <parameter key="comment_characters" value="#"/>
-        <parameter key="starting_row" value="1"/>
-        <parameter key="parse_numbers" value="true"/>
-        <parameter key="decimal_character" value="."/>
-        <parameter key="grouped_digits" value="false"/>
-        <parameter key="grouping_character" value=","/>
-        <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value=""/>
-        <parameter key="first_row_as_names" value="true"/>
-        <list key="annotations"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="encoding" value="windows-1252"/>
-        <parameter key="read_all_values_as_polynominal" value="false"/>
-        <list key="data_set_meta_data_information">
-          <parameter key="0" value="Member_number.true.integer.attribute"/>
-          <parameter key="1" value="Date.true.polynominal.attribute"/>
-          <parameter key="2" value="itemDescription.true.polynominal.attribute"/>
-        </list>
-        <parameter key="read_not_matching_values_as_missings" value="true"/>
-      </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Anzahl Produkte" width="90" x="179" y="85">
-        <parameter key="use_default_aggregation" value="false"/>
-        <parameter key="attribute_filter_type" value="all"/>
-        <parameter key="attribute" value=""/>
-        <parameter key="attributes" value=""/>
-        <parameter key="use_except_expression" value="false"/>
-        <parameter key="value_type" value="attribute_value"/>
-        <parameter key="use_value_type_exception" value="false"/>
-        <parameter key="except_value_type" value="time"/>
-        <parameter key="block_type" value="attribute_block"/>
-        <parameter key="use_block_type_exception" value="false"/>
-        <parameter key="except_block_type" value="value_matrix_row_start"/>
-        <parameter key="invert_selection" value="false"/>
-        <parameter key="include_special_attributes" value="false"/>
-        <parameter key="default_aggregation_function" value="average"/>
-        <list key="aggregation_attributes">
-          <parameter key="itemDescription" value="count"/>
-        </list>
-        <parameter key="group_by_attributes" value="itemDescription"/>
-        <parameter key="count_all_combinations" value="false"/>
-        <parameter key="only_distinct" value="false"/>
-        <parameter key="ignore_missings" value="true"/>
-      </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort desc" width="90" x="313" y="85">
-        <list key="sort_by">
-          <parameter key="count(itemDescription)" value="descending"/>
-        </list>
-      </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename (3)" width="90" x="447" y="85">
-        <list key="rename attributes">
-          <parameter key="count(itemDescription)" value="Anzahl"/>
-        </list>
-        <parameter key="from_attribute" value=""/>
-        <parameter key="to_attribute" value=""/>
-      </operator>
-      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="Filter Top 10" width="90" x="581" y="85">
-        <parameter key="first_example" value="1"/>
-        <parameter key="last_example" value="10"/>
-        <parameter key="invert_filter" value="false"/>
-      </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read CSV (3)" width="90" x="45" y="289">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data prep und exploration\Groceries_dataset.csv"/>
-        <parameter key="column_separators" value=","/>
-        <parameter key="trim_lines" value="false"/>
-        <parameter key="use_quotes" value="true"/>
-        <parameter key="quotes_character" value="&quot;"/>
-        <parameter key="escape_character" value="\"/>
-        <parameter key="skip_comments" value="true"/>
-        <parameter key="comment_characters" value="#"/>
-        <parameter key="starting_row" value="1"/>
-        <parameter key="parse_numbers" value="true"/>
-        <parameter key="decimal_character" value="."/>
-        <parameter key="grouped_digits" value="false"/>
-        <parameter key="grouping_character" value=","/>
-        <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value=""/>
-        <parameter key="first_row_as_names" value="true"/>
-        <list key="annotations"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="encoding" value="windows-1252"/>
-        <parameter key="read_all_values_as_polynominal" value="false"/>
-        <list key="data_set_meta_data_information">
-          <parameter key="0" value="Member_number.true.integer.attribute"/>
-          <parameter key="1" value="Date.true.polynominal.attribute"/>
-          <parameter key="2" value="itemDescription.true.polynominal.attribute"/>
-        </list>
-        <parameter key="read_not_matching_values_as_missings" value="true"/>
-      </operator>
-      <operator activated="true" class="blending:pivot" compatibility="10.0.000" expanded="true" height="103" name="Pivot" width="90" x="179" y="289">
-        <parameter key="group_by_attributes" value="Date|Member_number"/>
-        <parameter key="column_grouping_attribute" value="itemDescription"/>
-        <list key="aggregation_attributes">
-          <parameter key="itemDescription" value="concatenation"/>
-        </list>
-        <parameter key="use_default_aggregation" value="false"/>
-        <parameter key="default_aggregation_function" value="first"/>
-      </operator>
-      <operator activated="true" class="replace" compatibility="10.0.000" expanded="true" height="82" name="Replace - with . (2)" width="90" x="313" y="289">
-        <parameter key="attribute_filter_type" value="single"/>
-        <parameter key="attribute" value="Date"/>
-        <parameter key="attributes" value=""/>
-        <parameter key="use_except_expression" value="false"/>
-        <parameter key="value_type" value="nominal"/>
-        <parameter key="use_value_type_exception" value="false"/>
-        <parameter key="except_value_type" value="file_path"/>
-        <parameter key="block_type" value="single_value"/>
-        <parameter key="use_block_type_exception" value="false"/>
-        <parameter key="except_block_type" value="single_value"/>
-        <parameter key="invert_selection" value="false"/>
-        <parameter key="include_special_attributes" value="false"/>
-        <parameter key="replace_what" value="-"/>
-        <parameter key="replace_by" value="."/>
-      </operator>
-      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Date als Datum (2)" width="90" x="447" y="289">
-        <parameter key="attribute_name" value="Date"/>
-        <parameter key="date_type" value="date"/>
-        <parameter key="date_format" value="dd.MM.yyyy"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="false"/>
-      </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort" width="90" x="581" y="289">
-        <list key="sort_by">
-          <parameter key="Date" value="ascending"/>
-        </list>
-      </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="715" y="289">
-        <parameter key="parameter_expression" value=""/>
-        <parameter key="condition_class" value="custom_filters"/>
-        <parameter key="invert_filter" value="false"/>
-        <list key="filters_list">
-          <parameter key="filters_entry_key" value="Date.ge.12/31/2014"/>
-        </list>
-        <parameter key="filters_logic_and" value="true"/>
-        <parameter key="filters_check_metadata" value="true"/>
-      </operator>
-      <connect from_op="Read CSV" from_port="output" to_op="Set ID" to_port="example set input"/>
+      <connect from_op="Read CSV (2)" from_port="output" to_op="Set ID" to_port="example set input"/>
       <connect from_op="Set ID" from_port="example set output" to_op="Aggregate Date + ID" to_port="example set input"/>
       <connect from_op="Aggregate Date + ID" from_port="example set output" to_op="Split Products" to_port="example set input"/>
       <connect from_op="Split Products" from_port="example set output" to_op="Rename Product Columns" to_port="example set input"/>
@@ -351,25 +207,9 @@
       <connect from_op="Day in Week" from_port="example set output" to_op="Rename (2)" to_port="example set input"/>
       <connect from_op="Rename (2)" from_port="example set output" to_op="Reorder Attributes (2)" to_port="example set input"/>
       <connect from_op="Reorder Attributes (2)" from_port="example set output" to_op="Write CSV" to_port="input"/>
-      <connect from_op="Read CSV (2)" from_port="output" to_op="Anzahl Produkte" to_port="example set input"/>
-      <connect from_op="Anzahl Produkte" from_port="example set output" to_op="Sort desc" to_port="example set input"/>
-      <connect from_op="Sort desc" from_port="example set output" to_op="Rename (3)" to_port="example set input"/>
-      <connect from_op="Rename (3)" from_port="example set output" to_op="Filter Top 10" to_port="example set input"/>
-      <connect from_op="Filter Top 10" from_port="example set output" to_port="result 1"/>
-      <connect from_op="Read CSV (3)" from_port="output" to_op="Pivot" to_port="input"/>
-      <connect from_op="Pivot" from_port="output" to_op="Replace - with . (2)" to_port="example set input"/>
-      <connect from_op="Replace - with . (2)" from_port="example set output" to_op="Date als Datum (2)" to_port="example set input"/>
-      <connect from_op="Date als Datum (2)" from_port="example set output" to_op="Sort" to_port="example set input"/>
-      <connect from_op="Sort" from_port="example set output" to_op="Filter Examples" to_port="example set input"/>
-      <connect from_op="Filter Examples" from_port="example set output" to_port="result 2"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
-      <portSpacing port="sink_result 2" spacing="0"/>
-      <portSpacing port="sink_result 3" spacing="0"/>
-      <portSpacing port="sink_result 4" spacing="0"/>
-      <description align="center" color="yellow" colored="false" height="54" resized="true" width="301" x="42" y="25">WIe oft wurde welches Produkt gekauft? &lt;br/&gt;Am Ende f&amp;#252;r Abb. auf Top 10 eingeschr&amp;#228;nkt.</description>
-      <description align="center" color="yellow" colored="false" height="86" resized="true" width="641" x="40" y="479">Data prepartion&lt;br&gt;Date wurde in Tag, Woche, Jahr und Wochentag aufgespalten.&lt;br&gt;Eink&amp;#228;ufe desselben Kunden an demselben Tag wurden aggregiert. Die gekauften Produkte werden in separaten Spalten (Produkt_x) ausgegeben.&lt;br&gt;</description>
-      <description align="center" color="yellow" colored="false" height="55" resized="true" width="298" x="46" y="216">Seaisonalit&amp;#228;t Stichprobe aus dem Jahr 2015&lt;br&gt;bspw. Berries oder Flower Seeds</description>
+      <description align="center" color="yellow" colored="false" height="86" resized="true" width="641" x="156" y="471">Data prepartion&lt;br&gt;Date wurde in Tag, Woche, Jahr und Wochentag aufgespalten.&lt;br&gt;Eink&amp;#228;ufe desselben Kunden an demselben Tag wurden aggregiert. Die gekauften Produkte werden in separaten Spalten (Produkt_x) ausgegeben.&lt;br&gt;</description>
     </process>
   </operator>
 </process>
