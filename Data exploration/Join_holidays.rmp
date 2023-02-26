@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.0.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.0.000" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" breakpoints="after" class="read_excel" compatibility="10.0.000" expanded="true" height="68" name="Read Excel" width="90" x="112" y="442">
+        <parameter key="excel_file" value="C:\Users\rahgi\Desktop\Uni-skripte\Master_HDM\Appied DS\DataScience_RM\Data exploration\Region Scotland_Archive Events and holidays 2016_2017.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Date.true.date.attribute"/>
+          <parameter key="1" value="Day.true.polynominal.attribute"/>
+          <parameter key="2" value="Public holiday.true.polynominal.attribute"/>
+          <parameter key="3" value="CW.true.integer.attribute"/>
+          <parameter key="4" value="Class.true.integer.attribute"/>
+          <parameter key="5" value="Class description.true.polynominal.attribute"/>
+          <parameter key="6" value="G.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Backery" width="90" x="45" y="238">
+        <parameter key="csv_file" value="C:\Users\rahgi\Desktop\Uni-skripte\Master_HDM\Appied DS\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="10.0.000" expanded="true" height="82" name="Set ID" width="90" x="179" y="238">
+        <parameter key="attribute_name" value="TransactionNo"/>
+        <parameter key="target_role" value="id"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="true" class="generate_copy" compatibility="10.0.000" expanded="true" height="82" name="Copy Column Date" width="90" x="313" y="238">
+        <parameter key="attribute_name" value="DateTime"/>
+        <parameter key="new_name" value="Datesplit"/>
+      </operator>
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal" width="90" x="447" y="238">
+        <parameter key="attribute_name" value="Datesplit"/>
+        <parameter key="date_format" value="dd.MM.yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Nominal to Date" width="90" x="581" y="238">
+        <parameter key="attribute_name" value="Datesplit"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="dd.MM.yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="numerical_to_date" compatibility="10.0.000" expanded="true" height="82" name="Numerical to Date" width="90" x="313" y="442">
+        <parameter key="attribute_name" value="Class"/>
+        <parameter key="keep_old_attribute" value="false"/>
+        <parameter key="time_offset" value="0"/>
+      </operator>
+      <operator activated="true" class="concurrency:join" compatibility="10.0.000" expanded="true" height="82" name="Join" width="90" x="581" y="391">
+        <parameter key="remove_double_attributes" value="true"/>
+        <parameter key="join_type" value="inner"/>
+        <parameter key="use_id_attribute_as_key" value="false"/>
+        <list key="key_attributes">
+          <parameter key="Datesplit" value="Date"/>
+        </list>
+        <parameter key="keep_both_join_attributes" value="false"/>
+      </operator>
+      <connect from_op="Read Excel" from_port="output" to_op="Numerical to Date" to_port="example set input"/>
+      <connect from_op="Read Backery" from_port="output" to_op="Set ID" to_port="example set input"/>
+      <connect from_op="Set ID" from_port="example set output" to_op="Copy Column Date" to_port="example set input"/>
+      <connect from_op="Copy Column Date" from_port="example set output" to_op="Date to Nominal" to_port="example set input"/>
+      <connect from_op="Date to Nominal" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
+      <connect from_op="Nominal to Date" from_port="example set output" to_op="Join" to_port="left"/>
+      <connect from_op="Numerical to Date" from_port="example set output" to_op="Join" to_port="right"/>
+      <connect from_op="Join" from_port="join" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
