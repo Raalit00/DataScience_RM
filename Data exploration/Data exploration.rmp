@@ -543,6 +543,7 @@
       <portSpacing port="sink_result 7" spacing="0"/>
       <portSpacing port="sink_result 8" spacing="0"/>
       <portSpacing port="sink_result 9" spacing="0"/>
+      <portSpacing port="sink_result 10" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="223" x="47" y="67">Items pro Transaktion</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="46" y="271">Items pro Monat</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="43" y="477">Items je Wochentag</description>
