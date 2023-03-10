@@ -1,0 +1,11 @@
+Bakery:
+https://www.kaggle.com/datasets/akashdeepkuila/bakery
+
+Wetterdaten:
+https://www.kaggle.com/datasets/josephw20/uk-met-office-weather-data
+
+Feiertage:
+2016
+https://www.feiertagskalender.ch/index.php?geo=3444&jahr=2016&hl=en
+2017
+https://www.feiertagskalender.ch/index.php?geo=3444&jahr=2017&klasse=5&hl=en
