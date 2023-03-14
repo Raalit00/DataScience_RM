@@ -461,7 +461,7 @@
       <operator activated="false" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store (2)" width="90" x="514" y="136">
         <parameter key="repository_entry" value="../Data/Weather_retrieve"/>
       </operator>
-      <operator activated="true" breakpoints="before" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (11)" width="90" x="45" y="2584">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (11)" width="90" x="45" y="2584">
         <parameter key="repository_entry" value="../Data/Bakery_weather"/>
       </operator>
       <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="179" y="2584">
@@ -472,12 +472,27 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" breakpoints="after" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (2)" width="90" x="313" y="2584">
+      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Nominal to Date" width="90" x="313" y="2584">
+        <parameter key="attribute_name" value="DateTime_nominal"/>
+        <parameter key="date_type" value="date"/>
+        <parameter key="date_format" value="yyyy.M"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (3)" width="90" x="447" y="2584">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="false" breakpoints="after" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="447" y="2584">
+      <operator activated="false" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (7)" width="90" x="447" y="2482">
+        <parameter key="attribute_name" value="DateTime_nominal"/>
+        <parameter key="date_format" value="MM.yyyy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="keep_old_attribute" value="false"/>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="581" y="2584">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -492,7 +507,9 @@
         <parameter key="invert_selection" value="false"/>
         <parameter key="include_special_attributes" value="false"/>
         <parameter key="default_aggregation_function" value="average"/>
-        <list key="aggregation_attributes"/>
+        <list key="aggregation_attributes">
+          <parameter key="Items" value="count"/>
+        </list>
         <parameter key="group_by_attributes" value="DateTime_nominal|tmax|tmin"/>
         <parameter key="count_all_combinations" value="false"/>
         <parameter key="only_distinct" value="false"/>
@@ -523,13 +540,12 @@
       <connect from_op="DateToNumerical" from_port="example set output" to_op="Weekday (4)" to_port="example set input"/>
       <connect from_op="Weekday (4)" from_port="example set output" to_op="DayTypeCorrected (2)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (2)" from_port="example set output" to_op="Aggregate" to_port="example set input"/>
-      <connect from_op="Aggregate" from_port="example set output" to_port="result 9"/>
       <connect from_op="Retrieve (7)" from_port="output" to_op="Date to Nominal (5)" to_port="example set input"/>
       <connect from_op="Date to Nominal (5)" from_port="example set output" to_op="DateToNumerical (2)" to_port="example set input"/>
       <connect from_op="DateToNumerical (2)" from_port="example set output" to_op="Weekday (5)" to_port="example set input"/>
       <connect from_op="Weekday (5)" from_port="example set output" to_op="DayTypeCorrected (3)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (3)" from_port="example set output" to_op="Top 5 Items (2)" to_port="example set input"/>
-      <connect from_op="Top 5 Items (2)" from_port="example set output" to_port="result 10"/>
+      <connect from_op="Top 5 Items (2)" from_port="example set output" to_port="result 9"/>
       <connect from_op="Retrieve (8)" from_port="output" to_op="Hours" to_port="example set input"/>
       <connect from_op="Hours" from_port="example set output" to_op="Top5Items" to_port="example set input"/>
       <connect from_op="Top5Items" from_port="example set output" to_op="TransactionsPerHour" to_port="example set input"/>
@@ -546,8 +562,10 @@
       <connect from_op="Sort Date New Year" from_port="example set output" to_port="result 5"/>
       <connect from_op="Read Weather" from_port="output" to_op="Store (2)" to_port="input"/>
       <connect from_op="Retrieve (11)" from_port="output" to_op="Filter Examples" to_port="example set input"/>
-      <connect from_op="Filter Examples" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
-      <connect from_op="Sort (2)" from_port="example set output" to_port="result 11"/>
+      <connect from_op="Filter Examples" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
+      <connect from_op="Nominal to Date" from_port="example set output" to_op="Sort (3)" to_port="example set input"/>
+      <connect from_op="Sort (3)" from_port="example set output" to_op="Aggregate (2)" to_port="example set input"/>
+      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 10"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -560,7 +578,6 @@
       <portSpacing port="sink_result 9" spacing="0"/>
       <portSpacing port="sink_result 10" spacing="0"/>
       <portSpacing port="sink_result 11" spacing="0"/>
-      <portSpacing port="sink_result 12" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="223" x="45" y="279">Items pro Transaktion</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="38" y="481">Items pro Monat</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="43" y="680">Items je Wochentag</description>
