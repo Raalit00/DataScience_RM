@@ -79,20 +79,43 @@
       <operator activated="false" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store" width="90" x="179" y="136">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (2)" width="90" x="45" y="544">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (2)" width="90" x="45" y="595">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (2)" width="90" x="179" y="544">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (2)" width="90" x="179" y="595">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="MMMM `yy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Items per Month" width="90" x="313" y="544">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Transactions per Month" width="90" x="313" y="595">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (4)" width="90" x="447" y="595">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="TransactionNo" value="count"/>
+        </list>
+        <parameter key="group_by_attributes" value="DateTime_nominal"/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="true"/>
+        <parameter key="ignore_missings" value="true"/>
       </operator>
       <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (3)" width="90" x="45" y="748">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
@@ -576,13 +599,29 @@
         <parameter key="only_distinct" value="true"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (13)" width="90" x="45" y="493">
+        <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
+      </operator>
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (8)" width="90" x="179" y="493">
+        <parameter key="attribute_name" value="DateTime"/>
+        <parameter key="date_format" value="MMMM `yy"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="keep_old_attribute" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Items per Month (2)" width="90" x="313" y="493">
+        <list key="sort_by">
+          <parameter key="DateTime" value="ascending"/>
+        </list>
+      </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
       <connect from_op="Count TransactionNo" from_port="example set output" to_op="Items Per Transaction" to_port="example set input"/>
       <connect from_op="Items Per Transaction" from_port="example set output" to_port="result 1"/>
       <connect from_op="Read Bakery" from_port="output" to_op="Store" to_port="input"/>
       <connect from_op="Retrieve (2)" from_port="output" to_op="Date to Nominal (2)" to_port="example set input"/>
-      <connect from_op="Date to Nominal (2)" from_port="example set output" to_op="Items per Month" to_port="example set input"/>
-      <connect from_op="Items per Month" from_port="example set output" to_port="result 5"/>
+      <connect from_op="Date to Nominal (2)" from_port="example set output" to_op="Transactions per Month" to_port="example set input"/>
+      <connect from_op="Transactions per Month" from_port="example set output" to_op="Aggregate (4)" to_port="example set input"/>
+      <connect from_op="Aggregate (4)" from_port="example set output" to_port="result 5"/>
       <connect from_op="Retrieve (3)" from_port="output" to_op="Date To Numerical" to_port="example set input"/>
       <connect from_op="Date To Numerical" from_port="example set output" to_op="Weekday" to_port="example set input"/>
       <connect from_op="Weekday" from_port="example set output" to_port="result 6"/>
@@ -635,6 +674,9 @@
       <connect from_op="Weekday (6)" from_port="example set output" to_op="DayTypeCorrected (4)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (4)" from_port="example set output" to_op="Aggregate (3)" to_port="example set input"/>
       <connect from_op="Aggregate (3)" from_port="example set output" to_port="result 12"/>
+      <connect from_op="Retrieve (13)" from_port="output" to_op="Date to Nominal (8)" to_port="example set input"/>
+      <connect from_op="Date to Nominal (8)" from_port="example set output" to_op="Items per Month (2)" to_port="example set input"/>
+      <connect from_op="Items per Month (2)" from_port="example set output" to_port="result 13"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -649,8 +691,9 @@
       <portSpacing port="sink_result 11" spacing="0"/>
       <portSpacing port="sink_result 12" spacing="0"/>
       <portSpacing port="sink_result 13" spacing="0"/>
+      <portSpacing port="sink_result 14" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="223" x="45" y="279">Items pro Transaktion</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="38" y="481">Items pro Monat</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="43" y="437">Items und Transactionen pro Monat</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="43" y="680">Items je Wochentag</description>
       <description align="left" color="red" colored="true" height="67" resized="true" width="598" x="45" y="839">Fehlerhafte Daten in der Spalte &amp;#8222;DayType&amp;#8220;.&lt;br&gt;Weekday und Weekend stimmen nicht mit aus dem Datum generierten Wochentagen &amp;#252;berein. Der 11. September 2016 war bspw. ein Sonntag, wird aber einem Arbeitstag zugeordnet.&lt;br&gt;</description>
       <description align="center" color="yellow" colored="false" height="64" resized="true" width="387" x="45" y="948">Neue Spalte mit korrigiertem DayTyp&lt;br/&gt;Verkaufte Produkte je Wochentage</description>
