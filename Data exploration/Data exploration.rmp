@@ -461,10 +461,10 @@
       <operator activated="false" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store (2)" width="90" x="514" y="136">
         <parameter key="repository_entry" value="../Data/Weather_retrieve"/>
       </operator>
-      <operator activated="true" breakpoints="before" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (11)" width="90" x="45" y="2482">
+      <operator activated="true" breakpoints="before" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (11)" width="90" x="45" y="2584">
         <parameter key="repository_entry" value="../Data/Bakery_weather"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="179" y="2482">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="179" y="2584">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="no_missing_attributes"/>
         <parameter key="invert_filter" value="false"/>
@@ -472,12 +472,12 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (2)" width="90" x="313" y="2482">
+      <operator activated="true" breakpoints="after" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (2)" width="90" x="313" y="2584">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" breakpoints="after" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="447" y="2482">
+      <operator activated="false" breakpoints="after" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="447" y="2584">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -547,8 +547,7 @@
       <connect from_op="Read Weather" from_port="output" to_op="Store (2)" to_port="input"/>
       <connect from_op="Retrieve (11)" from_port="output" to_op="Filter Examples" to_port="example set input"/>
       <connect from_op="Filter Examples" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
-      <connect from_op="Sort (2)" from_port="example set output" to_op="Aggregate (2)" to_port="example set input"/>
-      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 11"/>
+      <connect from_op="Sort (2)" from_port="example set output" to_port="result 11"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -573,6 +572,7 @@
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="320" x="44" y="2256">Verkauf Top 5 Items w&amp;#228;hrend Neujahr</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="314" x="43" y="1397">Items Vergleich Arbeitswoche &amp;lt;-&amp;gt; Wochenende</description>
       <description align="left" color="green" colored="true" height="50" resized="true" width="582" x="38" y="70">Die Datens&amp;#228;tze wurden jeweils einmal importiert und dann im Repository abgespeichert.&lt;br&gt;Es erleichtert die Arbeit im Team, wenn mit relativen Pfaden gearbeitet werden kann.&lt;br&gt;</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="243" x="54" y="2517">Exploration Wetterdaten</description>
     </process>
   </operator>
 </process>
