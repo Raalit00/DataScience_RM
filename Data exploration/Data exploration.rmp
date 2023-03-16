@@ -614,6 +614,37 @@
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
+      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (2)" width="90" x="313" y="238">
+        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
+        <parameter key="column_separators" value=","/>
+        <parameter key="trim_lines" value="false"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="skip_comments" value="true"/>
+        <parameter key="comment_characters" value="#"/>
+        <parameter key="starting_row" value="1"/>
+        <parameter key="parse_numbers" value="true"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="encoding" value="windows-1252"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
+          <parameter key="1" value="Items.true.polynominal.attribute"/>
+          <parameter key="2" value="DateTime.true.date_time.attribute"/>
+          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
+          <parameter key="4" value="DayType.true.polynominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      </operator>
       <connect from_op="Retrieve" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
       <connect from_op="Count TransactionNo" from_port="example set output" to_op="Items Per Transaction" to_port="example set input"/>
       <connect from_op="Items Per Transaction" from_port="example set output" to_port="result 1"/>
@@ -621,10 +652,10 @@
       <connect from_op="Retrieve (2)" from_port="output" to_op="Date to Nominal (2)" to_port="example set input"/>
       <connect from_op="Date to Nominal (2)" from_port="example set output" to_op="Transactions per Month" to_port="example set input"/>
       <connect from_op="Transactions per Month" from_port="example set output" to_op="Aggregate (4)" to_port="example set input"/>
-      <connect from_op="Aggregate (4)" from_port="example set output" to_port="result 5"/>
+      <connect from_op="Aggregate (4)" from_port="example set output" to_port="result 4"/>
       <connect from_op="Retrieve (3)" from_port="output" to_op="Date To Numerical" to_port="example set input"/>
       <connect from_op="Date To Numerical" from_port="example set output" to_op="Weekday" to_port="example set input"/>
-      <connect from_op="Weekday" from_port="example set output" to_port="result 6"/>
+      <connect from_op="Weekday" from_port="example set output" to_port="result 5"/>
       <connect from_op="Retrieve (4)" from_port="output" to_op="Date to Nominal (3)" to_port="example set input"/>
       <connect from_op="Date to Nominal (3)" from_port="example set output" to_op="DateToNumerical (3)" to_port="example set input"/>
       <connect from_op="DateToNumerical (3)" from_port="example set output" to_op="Weekday (3)" to_port="example set input"/>
@@ -640,43 +671,44 @@
       <connect from_op="DateToNumerical" from_port="example set output" to_op="Weekday (4)" to_port="example set input"/>
       <connect from_op="Weekday (4)" from_port="example set output" to_op="DayTypeCorrected (2)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (2)" from_port="example set output" to_op="Aggregate" to_port="example set input"/>
-      <connect from_op="Aggregate" from_port="example set output" to_port="result 11"/>
+      <connect from_op="Aggregate" from_port="example set output" to_port="result 8"/>
       <connect from_op="Retrieve (7)" from_port="output" to_op="Date to Nominal (5)" to_port="example set input"/>
       <connect from_op="Date to Nominal (5)" from_port="example set output" to_op="DateToNumerical (2)" to_port="example set input"/>
       <connect from_op="DateToNumerical (2)" from_port="example set output" to_op="Weekday (5)" to_port="example set input"/>
       <connect from_op="Weekday (5)" from_port="example set output" to_op="DayTypeCorrected (3)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (3)" from_port="example set output" to_op="Top 5 Items (2)" to_port="example set input"/>
-      <connect from_op="Top 5 Items (2)" from_port="example set output" to_port="result 7"/>
+      <connect from_op="Top 5 Items (2)" from_port="example set output" to_port="result 6"/>
       <connect from_op="Retrieve (8)" from_port="output" to_op="Hours" to_port="example set input"/>
       <connect from_op="Hours" from_port="example set output" to_op="Top5Items" to_port="example set input"/>
       <connect from_op="Top5Items" from_port="example set output" to_op="TransactionsPerHour" to_port="example set input"/>
-      <connect from_op="TransactionsPerHour" from_port="example set output" to_port="result 10"/>
+      <connect from_op="TransactionsPerHour" from_port="example set output" to_port="result 7"/>
       <connect from_op="Retrieve (9)" from_port="output" to_op="Timeframe Christmas" to_port="example set input"/>
       <connect from_op="Timeframe Christmas" from_port="example set output" to_op="Top 5 Items" to_port="example set input"/>
       <connect from_op="Top 5 Items" from_port="example set output" to_op="Date to Nominal (6)" to_port="example set input"/>
       <connect from_op="Date to Nominal (6)" from_port="example set output" to_op="Sort Date Christmas" to_port="example set input"/>
-      <connect from_op="Sort Date Christmas" from_port="example set output" to_port="result 4"/>
+      <connect from_op="Sort Date Christmas" from_port="example set output" to_port="result 11"/>
       <connect from_op="Retrieve (10)" from_port="output" to_op="Timeframe New Year" to_port="example set input"/>
       <connect from_op="Timeframe New Year" from_port="example set output" to_op="Top5Items (2)" to_port="example set input"/>
       <connect from_op="Top5Items (2)" from_port="example set output" to_op="Date to Nominal (4)" to_port="example set input"/>
       <connect from_op="Date to Nominal (4)" from_port="example set output" to_op="Sort Date New Year" to_port="example set input"/>
-      <connect from_op="Sort Date New Year" from_port="example set output" to_port="result 9"/>
+      <connect from_op="Sort Date New Year" from_port="example set output" to_port="result 12"/>
       <connect from_op="Read Weather" from_port="output" to_op="Store (2)" to_port="input"/>
       <connect from_op="Retrieve (11)" from_port="output" to_op="Filter Examples" to_port="example set input"/>
       <connect from_op="Filter Examples" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
       <connect from_op="Nominal to Date" from_port="example set output" to_op="Sort (3)" to_port="example set input"/>
       <connect from_op="Sort (3)" from_port="example set output" to_op="Generate Attributes" to_port="example set input"/>
       <connect from_op="Generate Attributes" from_port="example set output" to_op="Aggregate (2)" to_port="example set input"/>
-      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 8"/>
+      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 13"/>
       <connect from_op="Retrieve (12)" from_port="output" to_op="Date to Nominal (7)" to_port="example set input"/>
       <connect from_op="Date to Nominal (7)" from_port="example set output" to_op="DateToNumerical (4)" to_port="example set input"/>
       <connect from_op="DateToNumerical (4)" from_port="example set output" to_op="Weekday (6)" to_port="example set input"/>
       <connect from_op="Weekday (6)" from_port="example set output" to_op="DayTypeCorrected (4)" to_port="example set input"/>
       <connect from_op="DayTypeCorrected (4)" from_port="example set output" to_op="Aggregate (3)" to_port="example set input"/>
-      <connect from_op="Aggregate (3)" from_port="example set output" to_port="result 12"/>
+      <connect from_op="Aggregate (3)" from_port="example set output" to_port="result 9"/>
       <connect from_op="Retrieve (13)" from_port="output" to_op="Date to Nominal (8)" to_port="example set input"/>
       <connect from_op="Date to Nominal (8)" from_port="example set output" to_op="Items per Month (2)" to_port="example set input"/>
-      <connect from_op="Items per Month (2)" from_port="example set output" to_port="result 13"/>
+      <connect from_op="Items per Month (2)" from_port="example set output" to_port="result 10"/>
+      <connect from_op="Read Bakery (2)" from_port="output" to_port="result 14"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -692,6 +724,7 @@
       <portSpacing port="sink_result 12" spacing="0"/>
       <portSpacing port="sink_result 13" spacing="0"/>
       <portSpacing port="sink_result 14" spacing="0"/>
+      <portSpacing port="sink_result 15" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="223" x="45" y="279">Items pro Transaktion</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="43" y="437">Items und Transactionen pro Monat</description>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="43" y="680">Items je Wochentag</description>
