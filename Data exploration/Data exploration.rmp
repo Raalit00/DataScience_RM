@@ -12,7 +12,7 @@
     <parameter key="process_duration_for_mail" value="30"/>
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve" width="90" x="45" y="340">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery" width="90" x="45" y="340">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
       <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count TransactionNo" width="90" x="179" y="340">
@@ -79,22 +79,22 @@
       <operator activated="false" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store" width="90" x="179" y="136">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (2)" width="90" x="45" y="595">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (3)" width="90" x="45" y="646">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (2)" width="90" x="179" y="595">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (2)" width="90" x="179" y="646">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="MMMM `yy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Transactions per Month" width="90" x="313" y="595">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Transactions per Month" width="90" x="313" y="646">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (4)" width="90" x="447" y="595">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Transactions per Month (2)" width="90" x="447" y="646">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -117,10 +117,10 @@
         <parameter key="only_distinct" value="true"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (3)" width="90" x="45" y="748">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (4)" width="90" x="45" y="850">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="Date To Numerical" width="90" x="179" y="748">
+      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="Date To Numerical" width="90" x="179" y="850">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="time_unit" value="day"/>
         <parameter key="millisecond_relative_to" value="second"/>
@@ -135,24 +135,24 @@
         <parameter key="year_relative_to" value="era"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday" width="90" x="313" y="748">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday" width="90" x="313" y="850">
         <list key="rename attributes">
           <parameter key="DateTime_day" value="Weekday"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (4)" width="90" x="45" y="1054">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (5)" width="90" x="45" y="1156">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (3)" width="90" x="179" y="1054">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (3)" width="90" x="179" y="1156">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (3)" width="90" x="313" y="1054">
+      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (3)" width="90" x="313" y="1156">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="time_unit" value="day"/>
         <parameter key="millisecond_relative_to" value="second"/>
@@ -167,23 +167,26 @@
         <parameter key="year_relative_to" value="era"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (3)" width="90" x="447" y="1054">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (3)" width="90" x="447" y="1156">
         <list key="rename attributes">
           <parameter key="DateTime_day" value="Weekday"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="DayTypeCorrected" width="90" x="581" y="1054">
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="DayType Corrected" width="90" x="581" y="1156">
         <list key="function_descriptions">
           <parameter key="DayTypeCorrect" value="if (Weekday == (&quot;1&quot;), &quot;Weekend&quot;, if (Weekday == (&quot;7&quot;), &quot;Weekend&quot;, &quot;Workday&quot;))"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (5)" width="90" x="45" y="1258">
+      <operator activated="true" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store (3)" width="90" x="715" y="1156">
+        <parameter key="repository_entry" value="../Data exploration/Bakery_Corr_DayType"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (6)" width="90" x="45" y="1360">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="CountSoldItems" width="90" x="179" y="1258">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count Sold Items" width="90" x="179" y="1360">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -207,12 +210,12 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort" width="90" x="313" y="1258">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort" width="90" x="313" y="1360">
         <list key="sort_by">
           <parameter key="count(Items)" value="descending"/>
         </list>
       </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename" width="90" x="447" y="1258">
+      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Rename" width="90" x="447" y="1360">
         <list key="rename attributes">
           <parameter key="count(Items)" value="Count"/>
           <parameter key="percentage_count(Items)" value="Share"/>
@@ -220,50 +223,15 @@
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
       </operator>
-      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="MostSoldItems" width="90" x="581" y="1258">
+      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="Most Sold Items" width="90" x="581" y="1360">
         <parameter key="first_example" value="1"/>
         <parameter key="last_example" value="10"/>
         <parameter key="invert_filter" value="false"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (6)" width="90" x="45" y="1462">
-        <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (7)" width="90" x="45" y="1564">
+        <parameter key="repository_entry" value="../Data exploration/Bakery_Corr_DayType"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal" width="90" x="179" y="1462">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical" width="90" x="313" y="1462">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="time_unit" value="day"/>
-        <parameter key="millisecond_relative_to" value="second"/>
-        <parameter key="second_relative_to" value="minute"/>
-        <parameter key="minute_relative_to" value="hour"/>
-        <parameter key="hour_relative_to" value="day"/>
-        <parameter key="day_relative_to" value="week"/>
-        <parameter key="week_relative_to" value="year"/>
-        <parameter key="month_relative_to" value="year"/>
-        <parameter key="quarter_relative_to" value="year"/>
-        <parameter key="half_year_relative_to" value="year"/>
-        <parameter key="year_relative_to" value="era"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (4)" width="90" x="447" y="1462">
-        <list key="rename attributes">
-          <parameter key="DateTime_day" value="Weekday"/>
-        </list>
-        <parameter key="from_attribute" value=""/>
-        <parameter key="to_attribute" value=""/>
-      </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="DayTypeCorrected (2)" width="90" x="581" y="1462">
-        <list key="function_descriptions">
-          <parameter key="DayTypeCorrect" value="if (Weekday == (&quot;1&quot;), &quot;Weekend&quot;, if (Weekday == (&quot;7&quot;), &quot;Weekend&quot;, &quot;Workday&quot;))"/>
-        </list>
-        <parameter key="keep_all" value="true"/>
-      </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate" width="90" x="715" y="1462">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate Items" width="90" x="179" y="1564">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -287,68 +255,16 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (7)" width="90" x="45" y="1717">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (10)" width="90" x="45" y="1870">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (5)" width="90" x="179" y="1717">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (2)" width="90" x="313" y="1717">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="time_unit" value="day"/>
-        <parameter key="millisecond_relative_to" value="second"/>
-        <parameter key="second_relative_to" value="minute"/>
-        <parameter key="minute_relative_to" value="hour"/>
-        <parameter key="hour_relative_to" value="day"/>
-        <parameter key="day_relative_to" value="week"/>
-        <parameter key="week_relative_to" value="year"/>
-        <parameter key="month_relative_to" value="year"/>
-        <parameter key="quarter_relative_to" value="year"/>
-        <parameter key="half_year_relative_to" value="year"/>
-        <parameter key="year_relative_to" value="era"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (5)" width="90" x="447" y="1717">
-        <list key="rename attributes">
-          <parameter key="DateTime_day" value="Weekday"/>
-        </list>
-        <parameter key="from_attribute" value=""/>
-        <parameter key="to_attribute" value=""/>
-      </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="DayTypeCorrected (3)" width="90" x="581" y="1717">
-        <list key="function_descriptions">
-          <parameter key="DayTypeCorrect" value="if (Weekday == (&quot;1&quot;), &quot;Weekend&quot;, if (Weekday == (&quot;7&quot;), &quot;Weekend&quot;, &quot;Workday&quot;))"/>
-        </list>
-        <parameter key="keep_all" value="true"/>
-      </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top 5 Items (2)" width="90" x="715" y="1717">
-        <parameter key="parameter_expression" value=""/>
-        <parameter key="condition_class" value="custom_filters"/>
-        <parameter key="invert_filter" value="false"/>
-        <list key="filters_list">
-          <parameter key="filters_entry_key" value="Items.equals.Coffee"/>
-          <parameter key="filters_entry_key" value="Items.equals.Bread"/>
-          <parameter key="filters_entry_key" value="Items.equals.Tea"/>
-          <parameter key="filters_entry_key" value="Items.equals.Cake"/>
-          <parameter key="filters_entry_key" value="Items.equals.Pastry"/>
-        </list>
-        <parameter key="filters_logic_and" value="false"/>
-        <parameter key="filters_check_metadata" value="true"/>
-      </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (8)" width="90" x="45" y="1921">
-        <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
-      </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Hours" width="90" x="179" y="1921">
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Hours" width="90" x="179" y="1870">
         <list key="function_descriptions">
           <parameter key="Hours" value="date_str_custom(DateTime, &quot;HH&quot;)"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items" width="90" x="313" y="1921">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items" width="90" x="313" y="1870">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -362,15 +278,15 @@
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="TransactionsPerHour" width="90" x="447" y="1921">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Transactions Per Hour" width="90" x="447" y="1870">
         <list key="sort_by">
           <parameter key="Hours" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (9)" width="90" x="45" y="2125">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (11)" width="90" x="45" y="2431">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Timeframe Christmas" width="90" x="179" y="2125">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Timeframe Christmas" width="90" x="179" y="2431">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -381,7 +297,7 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top 5 Items" width="90" x="313" y="2125">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top 5 Items" width="90" x="313" y="2431">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -395,22 +311,22 @@
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (6)" width="90" x="447" y="2125">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (6)" width="90" x="447" y="2431">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="dd.MM.yy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Date Christmas" width="90" x="581" y="2125">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Date Christmas" width="90" x="581" y="2431">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (10)" width="90" x="45" y="2329">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (12)" width="90" x="45" y="2635">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Timeframe New Year" width="90" x="179" y="2329">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Timeframe New Year" width="90" x="179" y="2635">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -421,7 +337,7 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items (2)" width="90" x="313" y="2329">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Top5Items (2)" width="90" x="313" y="2635">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="custom_filters"/>
         <parameter key="invert_filter" value="false"/>
@@ -435,14 +351,14 @@
         <parameter key="filters_logic_and" value="false"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (4)" width="90" x="447" y="2329">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (4)" width="90" x="447" y="2635">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="dd.MM.yy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Date New Year" width="90" x="581" y="2329">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Date New Year" width="90" x="581" y="2635">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
@@ -484,10 +400,10 @@
       <operator activated="false" class="store" compatibility="10.0.000" expanded="true" height="68" name="Store (2)" width="90" x="514" y="136">
         <parameter key="repository_entry" value="../Data/Weather_retrieve"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (11)" width="90" x="45" y="2584">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Weather" width="90" x="45" y="2890">
         <parameter key="repository_entry" value="../Data/Bakery_weather"/>
       </operator>
-      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="179" y="2584">
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Examples" width="90" x="179" y="2890">
         <parameter key="parameter_expression" value=""/>
         <parameter key="condition_class" value="no_missing_attributes"/>
         <parameter key="invert_filter" value="false"/>
@@ -495,7 +411,7 @@
         <parameter key="filters_logic_and" value="true"/>
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
-      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Nominal to Date" width="90" x="313" y="2584">
+      <operator activated="true" class="nominal_to_date" compatibility="10.0.000" expanded="true" height="82" name="Nominal to Date" width="90" x="313" y="2890">
         <parameter key="attribute_name" value="DateTime_nominal"/>
         <parameter key="date_type" value="date"/>
         <parameter key="date_format" value="yyyy.M"/>
@@ -503,18 +419,18 @@
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="false"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (3)" width="90" x="447" y="2584">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (3)" width="90" x="447" y="2890">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Generate Attributes" width="90" x="581" y="2584">
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Generate Attributes" width="90" x="581" y="2890">
         <list key="function_descriptions">
           <parameter key="tavg" value="tmax-tmin"/>
         </list>
         <parameter key="keep_all" value="true"/>
       </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="715" y="2584">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (2)" width="90" x="715" y="2890">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -537,45 +453,10 @@
         <parameter key="only_distinct" value="false"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (12)" width="90" x="45" y="1564">
-        <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (8)" width="90" x="45" y="1666">
+        <parameter key="repository_entry" value="../Data exploration/Bakery_Corr_DayType"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (7)" width="90" x="179" y="1564">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="DateToNumerical (4)" width="90" x="313" y="1564">
-        <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="time_unit" value="day"/>
-        <parameter key="millisecond_relative_to" value="second"/>
-        <parameter key="second_relative_to" value="minute"/>
-        <parameter key="minute_relative_to" value="hour"/>
-        <parameter key="hour_relative_to" value="day"/>
-        <parameter key="day_relative_to" value="week"/>
-        <parameter key="week_relative_to" value="year"/>
-        <parameter key="month_relative_to" value="year"/>
-        <parameter key="quarter_relative_to" value="year"/>
-        <parameter key="half_year_relative_to" value="year"/>
-        <parameter key="year_relative_to" value="era"/>
-        <parameter key="keep_old_attribute" value="true"/>
-      </operator>
-      <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday (6)" width="90" x="447" y="1564">
-        <list key="rename attributes">
-          <parameter key="DateTime_day" value="Weekday"/>
-        </list>
-        <parameter key="from_attribute" value=""/>
-        <parameter key="to_attribute" value=""/>
-      </operator>
-      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="DayTypeCorrected (4)" width="90" x="581" y="1564">
-        <list key="function_descriptions">
-          <parameter key="DayTypeCorrect" value="if (Weekday == (&quot;1&quot;), &quot;Weekend&quot;, if (Weekday == (&quot;7&quot;), &quot;Weekend&quot;, &quot;Workday&quot;))"/>
-        </list>
-        <parameter key="keep_all" value="true"/>
-      </operator>
-      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate (3)" width="90" x="715" y="1564">
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Aggregate TransactionNo." width="90" x="179" y="1666">
         <parameter key="use_default_aggregation" value="false"/>
         <parameter key="attribute_filter_type" value="all"/>
         <parameter key="attribute" value=""/>
@@ -599,116 +480,175 @@
         <parameter key="only_distinct" value="true"/>
         <parameter key="ignore_missings" value="true"/>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve (13)" width="90" x="45" y="493">
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (2)" width="90" x="45" y="544">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (8)" width="90" x="179" y="493">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (8)" width="90" x="179" y="544">
         <parameter key="attribute_name" value="DateTime"/>
         <parameter key="date_format" value="MMMM `yy"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
-      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Items per Month (2)" width="90" x="313" y="493">
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Items per Month (2)" width="90" x="313" y="544">
         <list key="sort_by">
           <parameter key="DateTime" value="ascending"/>
         </list>
       </operator>
-      <operator activated="true" class="read_csv" compatibility="10.0.000" expanded="true" height="68" name="Read Bakery (2)" width="90" x="313" y="238">
-        <parameter key="csv_file" value="C:\Users\Alex_\Desktop\Introduction_Data_Science\Projekt\DataScience_RM\Data exploration\Bakery.csv"/>
-        <parameter key="column_separators" value=","/>
-        <parameter key="trim_lines" value="false"/>
-        <parameter key="use_quotes" value="true"/>
-        <parameter key="quotes_character" value="&quot;"/>
-        <parameter key="escape_character" value="\"/>
-        <parameter key="skip_comments" value="true"/>
-        <parameter key="comment_characters" value="#"/>
-        <parameter key="starting_row" value="1"/>
-        <parameter key="parse_numbers" value="true"/>
-        <parameter key="decimal_character" value="."/>
-        <parameter key="grouped_digits" value="false"/>
-        <parameter key="grouping_character" value=","/>
-        <parameter key="infinity_representation" value=""/>
-        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
-        <parameter key="first_row_as_names" value="true"/>
-        <list key="annotations"/>
-        <parameter key="time_zone" value="SYSTEM"/>
-        <parameter key="locale" value="English (United States)"/>
-        <parameter key="encoding" value="windows-1252"/>
-        <parameter key="read_all_values_as_polynominal" value="false"/>
-        <list key="data_set_meta_data_information">
-          <parameter key="0" value="TransactionNo.true.integer.attribute"/>
-          <parameter key="1" value="Items.true.polynominal.attribute"/>
-          <parameter key="2" value="DateTime.true.date_time.attribute"/>
-          <parameter key="3" value="Daypart.true.polynominal.attribute"/>
-          <parameter key="4" value="DayType.true.polynominal.attribute"/>
-        </list>
-        <parameter key="read_not_matching_values_as_missings" value="true"/>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (9)" width="90" x="45" y="2074">
+        <parameter key="repository_entry" value="../Data exploration/Bakery_Corr_DayType"/>
       </operator>
-      <connect from_op="Retrieve" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Workday" width="90" x="179" y="2074">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="DayTypeCorrect.equals.Workday"/>
+        </list>
+        <parameter key="filters_logic_and" value="true"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count Sold Items (2)" width="90" x="313" y="2074">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="Items" value="count"/>
+          <parameter key="Items" value="count (percentage)"/>
+        </list>
+        <parameter key="group_by_attributes" value="DayTypeCorrect|Items"/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="false"/>
+        <parameter key="ignore_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (2)" width="90" x="447" y="2074">
+        <list key="sort_by">
+          <parameter key="count(Items)" value="descending"/>
+        </list>
+      </operator>
+      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="Most Sold Items Workday" width="90" x="581" y="2074">
+        <parameter key="first_example" value="1"/>
+        <parameter key="last_example" value="10"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (13)" width="90" x="45" y="2227">
+        <parameter key="repository_entry" value="../Data exploration/Bakery_Corr_DayType"/>
+      </operator>
+      <operator activated="true" class="filter_examples" compatibility="10.0.000" expanded="true" height="103" name="Filter Weekend" width="90" x="179" y="2227">
+        <parameter key="parameter_expression" value=""/>
+        <parameter key="condition_class" value="custom_filters"/>
+        <parameter key="invert_filter" value="false"/>
+        <list key="filters_list">
+          <parameter key="filters_entry_key" value="DayTypeCorrect.equals.Weekend"/>
+        </list>
+        <parameter key="filters_logic_and" value="true"/>
+        <parameter key="filters_check_metadata" value="true"/>
+      </operator>
+      <operator activated="true" class="aggregate" compatibility="10.0.000" expanded="true" height="82" name="Count Sold Items (3)" width="90" x="313" y="2227">
+        <parameter key="use_default_aggregation" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default_aggregation_function" value="average"/>
+        <list key="aggregation_attributes">
+          <parameter key="Items" value="count"/>
+          <parameter key="Items" value="count (percentage)"/>
+        </list>
+        <parameter key="group_by_attributes" value="Items|DayTypeCorrect"/>
+        <parameter key="count_all_combinations" value="false"/>
+        <parameter key="only_distinct" value="false"/>
+        <parameter key="ignore_missings" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort (4)" width="90" x="447" y="2227">
+        <list key="sort_by">
+          <parameter key="count(Items)" value="descending"/>
+        </list>
+      </operator>
+      <operator activated="true" class="filter_example_range" compatibility="10.0.000" expanded="true" height="82" name="Most Sold Items Weekend" width="90" x="581" y="2227">
+        <parameter key="first_example" value="1"/>
+        <parameter key="last_example" value="10"/>
+        <parameter key="invert_filter" value="false"/>
+      </operator>
+      <connect from_op="Retrieve Bakery" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
       <connect from_op="Count TransactionNo" from_port="example set output" to_op="Items Per Transaction" to_port="example set input"/>
       <connect from_op="Items Per Transaction" from_port="example set output" to_port="result 1"/>
       <connect from_op="Read Bakery" from_port="output" to_op="Store" to_port="input"/>
-      <connect from_op="Retrieve (2)" from_port="output" to_op="Date to Nominal (2)" to_port="example set input"/>
+      <connect from_op="Retrieve Bakery (3)" from_port="output" to_op="Date to Nominal (2)" to_port="example set input"/>
       <connect from_op="Date to Nominal (2)" from_port="example set output" to_op="Transactions per Month" to_port="example set input"/>
-      <connect from_op="Transactions per Month" from_port="example set output" to_op="Aggregate (4)" to_port="example set input"/>
-      <connect from_op="Aggregate (4)" from_port="example set output" to_port="result 4"/>
-      <connect from_op="Retrieve (3)" from_port="output" to_op="Date To Numerical" to_port="example set input"/>
+      <connect from_op="Transactions per Month" from_port="example set output" to_op="Transactions per Month (2)" to_port="example set input"/>
+      <connect from_op="Transactions per Month (2)" from_port="example set output" to_port="result 3"/>
+      <connect from_op="Retrieve Bakery (4)" from_port="output" to_op="Date To Numerical" to_port="example set input"/>
       <connect from_op="Date To Numerical" from_port="example set output" to_op="Weekday" to_port="example set input"/>
-      <connect from_op="Weekday" from_port="example set output" to_port="result 5"/>
-      <connect from_op="Retrieve (4)" from_port="output" to_op="Date to Nominal (3)" to_port="example set input"/>
+      <connect from_op="Weekday" from_port="example set output" to_port="result 4"/>
+      <connect from_op="Retrieve Bakery (5)" from_port="output" to_op="Date to Nominal (3)" to_port="example set input"/>
       <connect from_op="Date to Nominal (3)" from_port="example set output" to_op="DateToNumerical (3)" to_port="example set input"/>
       <connect from_op="DateToNumerical (3)" from_port="example set output" to_op="Weekday (3)" to_port="example set input"/>
-      <connect from_op="Weekday (3)" from_port="example set output" to_op="DayTypeCorrected" to_port="example set input"/>
-      <connect from_op="DayTypeCorrected" from_port="example set output" to_port="result 3"/>
-      <connect from_op="Retrieve (5)" from_port="output" to_op="CountSoldItems" to_port="example set input"/>
-      <connect from_op="CountSoldItems" from_port="example set output" to_op="Sort" to_port="example set input"/>
+      <connect from_op="Weekday (3)" from_port="example set output" to_op="DayType Corrected" to_port="example set input"/>
+      <connect from_op="DayType Corrected" from_port="example set output" to_op="Store (3)" to_port="input"/>
+      <connect from_op="Store (3)" from_port="through" to_port="result 12"/>
+      <connect from_op="Retrieve Bakery (6)" from_port="output" to_op="Count Sold Items" to_port="example set input"/>
+      <connect from_op="Count Sold Items" from_port="example set output" to_op="Sort" to_port="example set input"/>
       <connect from_op="Sort" from_port="example set output" to_op="Rename" to_port="example set input"/>
-      <connect from_op="Rename" from_port="example set output" to_op="MostSoldItems" to_port="example set input"/>
-      <connect from_op="MostSoldItems" from_port="example set output" to_port="result 2"/>
-      <connect from_op="Retrieve (6)" from_port="output" to_op="Date to Nominal" to_port="example set input"/>
-      <connect from_op="Date to Nominal" from_port="example set output" to_op="DateToNumerical" to_port="example set input"/>
-      <connect from_op="DateToNumerical" from_port="example set output" to_op="Weekday (4)" to_port="example set input"/>
-      <connect from_op="Weekday (4)" from_port="example set output" to_op="DayTypeCorrected (2)" to_port="example set input"/>
-      <connect from_op="DayTypeCorrected (2)" from_port="example set output" to_op="Aggregate" to_port="example set input"/>
-      <connect from_op="Aggregate" from_port="example set output" to_port="result 8"/>
-      <connect from_op="Retrieve (7)" from_port="output" to_op="Date to Nominal (5)" to_port="example set input"/>
-      <connect from_op="Date to Nominal (5)" from_port="example set output" to_op="DateToNumerical (2)" to_port="example set input"/>
-      <connect from_op="DateToNumerical (2)" from_port="example set output" to_op="Weekday (5)" to_port="example set input"/>
-      <connect from_op="Weekday (5)" from_port="example set output" to_op="DayTypeCorrected (3)" to_port="example set input"/>
-      <connect from_op="DayTypeCorrected (3)" from_port="example set output" to_op="Top 5 Items (2)" to_port="example set input"/>
-      <connect from_op="Top 5 Items (2)" from_port="example set output" to_port="result 6"/>
-      <connect from_op="Retrieve (8)" from_port="output" to_op="Hours" to_port="example set input"/>
+      <connect from_op="Rename" from_port="example set output" to_op="Most Sold Items" to_port="example set input"/>
+      <connect from_op="Most Sold Items" from_port="example set output" to_port="result 2"/>
+      <connect from_op="Retrieve Bakery (7)" from_port="output" to_op="Aggregate Items" to_port="example set input"/>
+      <connect from_op="Aggregate Items" from_port="example set output" to_port="result 6"/>
+      <connect from_op="Retrieve Bakery (10)" from_port="output" to_op="Hours" to_port="example set input"/>
       <connect from_op="Hours" from_port="example set output" to_op="Top5Items" to_port="example set input"/>
-      <connect from_op="Top5Items" from_port="example set output" to_op="TransactionsPerHour" to_port="example set input"/>
-      <connect from_op="TransactionsPerHour" from_port="example set output" to_port="result 7"/>
-      <connect from_op="Retrieve (9)" from_port="output" to_op="Timeframe Christmas" to_port="example set input"/>
+      <connect from_op="Top5Items" from_port="example set output" to_op="Transactions Per Hour" to_port="example set input"/>
+      <connect from_op="Transactions Per Hour" from_port="example set output" to_port="result 5"/>
+      <connect from_op="Retrieve Bakery (11)" from_port="output" to_op="Timeframe Christmas" to_port="example set input"/>
       <connect from_op="Timeframe Christmas" from_port="example set output" to_op="Top 5 Items" to_port="example set input"/>
       <connect from_op="Top 5 Items" from_port="example set output" to_op="Date to Nominal (6)" to_port="example set input"/>
       <connect from_op="Date to Nominal (6)" from_port="example set output" to_op="Sort Date Christmas" to_port="example set input"/>
-      <connect from_op="Sort Date Christmas" from_port="example set output" to_port="result 11"/>
-      <connect from_op="Retrieve (10)" from_port="output" to_op="Timeframe New Year" to_port="example set input"/>
+      <connect from_op="Sort Date Christmas" from_port="example set output" to_port="result 9"/>
+      <connect from_op="Retrieve Bakery (12)" from_port="output" to_op="Timeframe New Year" to_port="example set input"/>
       <connect from_op="Timeframe New Year" from_port="example set output" to_op="Top5Items (2)" to_port="example set input"/>
       <connect from_op="Top5Items (2)" from_port="example set output" to_op="Date to Nominal (4)" to_port="example set input"/>
       <connect from_op="Date to Nominal (4)" from_port="example set output" to_op="Sort Date New Year" to_port="example set input"/>
-      <connect from_op="Sort Date New Year" from_port="example set output" to_port="result 12"/>
+      <connect from_op="Sort Date New Year" from_port="example set output" to_port="result 10"/>
       <connect from_op="Read Weather" from_port="output" to_op="Store (2)" to_port="input"/>
-      <connect from_op="Retrieve (11)" from_port="output" to_op="Filter Examples" to_port="example set input"/>
+      <connect from_op="Retrieve Weather" from_port="output" to_op="Filter Examples" to_port="example set input"/>
       <connect from_op="Filter Examples" from_port="example set output" to_op="Nominal to Date" to_port="example set input"/>
       <connect from_op="Nominal to Date" from_port="example set output" to_op="Sort (3)" to_port="example set input"/>
       <connect from_op="Sort (3)" from_port="example set output" to_op="Generate Attributes" to_port="example set input"/>
       <connect from_op="Generate Attributes" from_port="example set output" to_op="Aggregate (2)" to_port="example set input"/>
-      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 13"/>
-      <connect from_op="Retrieve (12)" from_port="output" to_op="Date to Nominal (7)" to_port="example set input"/>
-      <connect from_op="Date to Nominal (7)" from_port="example set output" to_op="DateToNumerical (4)" to_port="example set input"/>
-      <connect from_op="DateToNumerical (4)" from_port="example set output" to_op="Weekday (6)" to_port="example set input"/>
-      <connect from_op="Weekday (6)" from_port="example set output" to_op="DayTypeCorrected (4)" to_port="example set input"/>
-      <connect from_op="DayTypeCorrected (4)" from_port="example set output" to_op="Aggregate (3)" to_port="example set input"/>
-      <connect from_op="Aggregate (3)" from_port="example set output" to_port="result 9"/>
-      <connect from_op="Retrieve (13)" from_port="output" to_op="Date to Nominal (8)" to_port="example set input"/>
+      <connect from_op="Aggregate (2)" from_port="example set output" to_port="result 11"/>
+      <connect from_op="Retrieve Bakery (8)" from_port="output" to_op="Aggregate TransactionNo." to_port="example set input"/>
+      <connect from_op="Aggregate TransactionNo." from_port="example set output" to_port="result 7"/>
+      <connect from_op="Retrieve Bakery (2)" from_port="output" to_op="Date to Nominal (8)" to_port="example set input"/>
       <connect from_op="Date to Nominal (8)" from_port="example set output" to_op="Items per Month (2)" to_port="example set input"/>
-      <connect from_op="Items per Month (2)" from_port="example set output" to_port="result 10"/>
-      <connect from_op="Read Bakery (2)" from_port="output" to_port="result 14"/>
+      <connect from_op="Items per Month (2)" from_port="example set output" to_port="result 8"/>
+      <connect from_op="Retrieve Bakery (9)" from_port="output" to_op="Filter Workday" to_port="example set input"/>
+      <connect from_op="Filter Workday" from_port="example set output" to_op="Count Sold Items (2)" to_port="example set input"/>
+      <connect from_op="Count Sold Items (2)" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
+      <connect from_op="Sort (2)" from_port="example set output" to_op="Most Sold Items Workday" to_port="example set input"/>
+      <connect from_op="Most Sold Items Workday" from_port="example set output" to_port="result 13"/>
+      <connect from_op="Retrieve Bakery (13)" from_port="output" to_op="Filter Weekend" to_port="example set input"/>
+      <connect from_op="Filter Weekend" from_port="example set output" to_op="Count Sold Items (3)" to_port="example set input"/>
+      <connect from_op="Count Sold Items (3)" from_port="example set output" to_op="Sort (4)" to_port="example set input"/>
+      <connect from_op="Sort (4)" from_port="example set output" to_op="Most Sold Items Weekend" to_port="example set input"/>
+      <connect from_op="Most Sold Items Weekend" from_port="example set output" to_port="result 14"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
@@ -725,18 +665,20 @@
       <portSpacing port="sink_result 13" spacing="0"/>
       <portSpacing port="sink_result 14" spacing="0"/>
       <portSpacing port="sink_result 15" spacing="0"/>
+      <portSpacing port="sink_result 16" spacing="0"/>
       <description align="center" color="yellow" colored="false" height="50" resized="true" width="223" x="45" y="279">Items pro Transaktion</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="43" y="437">Items und Transactionen pro Monat</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="43" y="680">Items je Wochentag</description>
-      <description align="left" color="red" colored="true" height="67" resized="true" width="598" x="45" y="839">Fehlerhafte Daten in der Spalte &amp;#8222;DayType&amp;#8220;.&lt;br&gt;Weekday und Weekend stimmen nicht mit aus dem Datum generierten Wochentagen &amp;#252;berein. Der 11. September 2016 war bspw. ein Sonntag, wird aber einem Arbeitstag zugeordnet.&lt;br&gt;</description>
-      <description align="center" color="yellow" colored="false" height="64" resized="true" width="387" x="45" y="948">Neue Spalte mit korrigiertem DayTyp&lt;br/&gt;Verkaufte Produkte je Wochentage</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="204" x="40" y="1181">Top 10 Items</description>
-      <description align="center" color="yellow" colored="false" height="56" resized="true" width="235" x="46" y="1865">St&amp;#252;ndliche Ansicht von verkauften Items (Top 5)</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="320" x="42" y="2077">Verkauf Top 5 Items w&amp;#228;hrend Weihnachten</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="320" x="44" y="2256">Verkauf Top 5 Items w&amp;#228;hrend Neujahr</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="314" x="43" y="1397">Items Vergleich Arbeitswoche &amp;lt;-&amp;gt; Wochenende</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="297" x="46" y="476">Items und Transactionen pro Monat</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="293" x="44" y="783">Items je Wochentag</description>
+      <description align="left" color="red" colored="true" height="83" resized="true" width="599" x="43" y="944">Fehlerhafte Daten in der Spalte &amp;#8222;DayType&amp;#8220;.&lt;br&gt;Weekday und Weekend stimmen nicht mit aus dem Datum generierten Wochentagen &amp;#252;berein. Der 11. September 2016 war bspw. ein Sonntag, wird aber einem Arbeitstag zugeordnet.&lt;br&gt;Der 01.August 2017 war ein Dienstag, wird jedoch als Wochenende angegeben. &lt;br&gt;</description>
+      <description align="center" color="yellow" colored="false" height="64" resized="true" width="387" x="44" y="1067">Neue Spalte mit korrigiertem DayTyp&lt;br/&gt;Verkaufte Produkte je Wochentage</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="204" x="44" y="1287">Top 10 Items</description>
+      <description align="center" color="yellow" colored="false" height="56" resized="true" width="235" x="42" y="1790">St&amp;#252;ndliche Ansicht von verkauften Items (Top 5)</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="320" x="44" y="2353">Verkauf Top 5 Items w&amp;#228;hrend Weihnachten</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="320" x="44" y="2561">Verkauf Top 5 Items w&amp;#228;hrend Neujahr</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="314" x="45" y="1488">Vergleich Items und Transactions&lt;br/&gt;Arbeitswoche &amp;lt;-&amp;gt; Wochenende</description>
       <description align="left" color="green" colored="true" height="50" resized="true" width="582" x="38" y="70">Die Datens&amp;#228;tze wurden jeweils einmal importiert und dann im Repository abgespeichert.&lt;br&gt;Es erleichtert die Arbeit im Team, wenn mit relativen Pfaden gearbeitet werden kann.&lt;br&gt;</description>
-      <description align="center" color="yellow" colored="false" height="50" resized="true" width="243" x="54" y="2517">Exploration Wetterdaten</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="243" x="42" y="2821">Exploration Wetterdaten</description>
+      <description align="center" color="yellow" colored="false" height="50" resized="true" width="273" x="43" y="2003">Vergleich meistverkaufte Artikel an Werktagen und am Wochenende</description>
     </process>
   </operator>
 </process>
