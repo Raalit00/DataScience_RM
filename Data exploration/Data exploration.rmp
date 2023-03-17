@@ -120,34 +120,37 @@
       <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (4)" width="90" x="45" y="850">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
-      <operator activated="true" class="date_to_numerical" compatibility="10.0.000" expanded="true" height="82" name="Date To Numerical" width="90" x="179" y="850">
+      <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal" width="90" x="179" y="850">
         <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="time_unit" value="day"/>
-        <parameter key="millisecond_relative_to" value="second"/>
-        <parameter key="second_relative_to" value="minute"/>
-        <parameter key="minute_relative_to" value="hour"/>
-        <parameter key="hour_relative_to" value="day"/>
-        <parameter key="day_relative_to" value="week"/>
-        <parameter key="week_relative_to" value="year"/>
-        <parameter key="month_relative_to" value="year"/>
-        <parameter key="quarter_relative_to" value="year"/>
-        <parameter key="half_year_relative_to" value="year"/>
-        <parameter key="year_relative_to" value="era"/>
+        <parameter key="date_format" value="EEEE"/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
       </operator>
       <operator activated="true" class="blending:rename" compatibility="10.0.000" expanded="true" height="82" name="Weekday" width="90" x="313" y="850">
         <list key="rename attributes">
-          <parameter key="DateTime_day" value="Weekday"/>
+          <parameter key="DateTime_nominal" value="Weekday"/>
         </list>
         <parameter key="from_attribute" value=""/>
         <parameter key="to_attribute" value=""/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Generate Sort (2)" width="90" x="447" y="850">
+        <list key="function_descriptions">
+          <parameter key="sort" value="if (Weekday == (&quot;Monday&quot;), &quot;1&quot;, &#10;if (Weekday == (&quot;Tuesday&quot;), &quot;2&quot;, &#10;if (Weekday == (&quot;Wednesday&quot;), &quot;3&quot;,&#10;if (Weekday == (&quot;Thursday&quot;), &quot;4&quot;, &#10;if (Weekday == (&quot;Friday&quot;), &quot;5&quot;, &#10;if (Weekday == (&quot;Saturday&quot;), &quot;6&quot;, &#10;if (Weekday == (&quot;Sunday&quot;), &quot;7&quot;, &quot;fail gen attribute&quot;)))))))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Days (2)" width="90" x="581" y="850">
+        <list key="sort_by">
+          <parameter key="sort" value="ascending"/>
+        </list>
       </operator>
       <operator activated="true" class="retrieve" compatibility="10.0.000" expanded="true" height="68" name="Retrieve Bakery (5)" width="90" x="45" y="1156">
         <parameter key="repository_entry" value="../Data/Bakery_retrieve"/>
       </operator>
       <operator activated="true" class="date_to_nominal" compatibility="10.0.000" expanded="true" height="82" name="Date to Nominal (3)" width="90" x="179" y="1156">
         <parameter key="attribute_name" value="DateTime"/>
-        <parameter key="date_format" value="EEEE, dd.MM.yyyy"/>
+        <parameter key="date_format" value="EEEE"/>
         <parameter key="time_zone" value="SYSTEM"/>
         <parameter key="locale" value="English (United States)"/>
         <parameter key="keep_old_attribute" value="true"/>
@@ -586,6 +589,17 @@
         <parameter key="last_example" value="10"/>
         <parameter key="invert_filter" value="false"/>
       </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.0.000" expanded="true" height="82" name="Generate Sort" width="90" x="715" y="1156">
+        <list key="function_descriptions">
+          <parameter key="sort" value="if (DateTime_nominal == (&quot;Monday&quot;), &quot;1&quot;, &#10;if (DateTime_nominal == (&quot;Tuesday&quot;), &quot;2&quot;, &#10;if (DateTime_nominal == (&quot;Wednesday&quot;), &quot;3&quot;,&#10;if (DateTime_nominal == (&quot;Thursday&quot;), &quot;4&quot;, &#10;if (DateTime_nominal == (&quot;Friday&quot;), &quot;5&quot;, &#10;if (DateTime_nominal == (&quot;Saturday&quot;), &quot;6&quot;, &#10;if (DateTime_nominal == (&quot;Sunday&quot;), &quot;7&quot;, &quot;fail gen attribute&quot;)))))))"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="blending:sort" compatibility="10.0.000" expanded="true" height="82" name="Sort Days" width="90" x="849" y="1156">
+        <list key="sort_by">
+          <parameter key="sort" value="ascending"/>
+        </list>
+      </operator>
       <connect from_op="Retrieve Bakery" from_port="output" to_op="Count TransactionNo" to_port="example set input"/>
       <connect from_op="Count TransactionNo" from_port="example set output" to_op="Items Per Transaction" to_port="example set input"/>
       <connect from_op="Items Per Transaction" from_port="example set output" to_port="result 1"/>
@@ -594,14 +608,16 @@
       <connect from_op="Date to Nominal (2)" from_port="example set output" to_op="Transactions per Month" to_port="example set input"/>
       <connect from_op="Transactions per Month" from_port="example set output" to_op="Aggr. TransactionNo" to_port="example set input"/>
       <connect from_op="Aggr. TransactionNo" from_port="example set output" to_port="result 3"/>
-      <connect from_op="Retrieve Bakery (4)" from_port="output" to_op="Date To Numerical" to_port="example set input"/>
-      <connect from_op="Date To Numerical" from_port="example set output" to_op="Weekday" to_port="example set input"/>
-      <connect from_op="Weekday" from_port="example set output" to_port="result 4"/>
+      <connect from_op="Retrieve Bakery (4)" from_port="output" to_op="Date to Nominal" to_port="example set input"/>
+      <connect from_op="Date to Nominal" from_port="example set output" to_op="Weekday" to_port="example set input"/>
+      <connect from_op="Weekday" from_port="example set output" to_op="Generate Sort (2)" to_port="example set input"/>
+      <connect from_op="Generate Sort (2)" from_port="example set output" to_op="Sort Days (2)" to_port="example set input"/>
+      <connect from_op="Sort Days (2)" from_port="example set output" to_port="result 4"/>
       <connect from_op="Retrieve Bakery (5)" from_port="output" to_op="Date to Nominal (3)" to_port="example set input"/>
       <connect from_op="Date to Nominal (3)" from_port="example set output" to_op="DateToNumerical (3)" to_port="example set input"/>
       <connect from_op="DateToNumerical (3)" from_port="example set output" to_op="Weekday (3)" to_port="example set input"/>
       <connect from_op="Weekday (3)" from_port="example set output" to_op="DayType Corrected" to_port="example set input"/>
-      <connect from_op="DayType Corrected" from_port="example set output" to_port="result 12"/>
+      <connect from_op="DayType Corrected" from_port="example set output" to_op="Generate Sort" to_port="example set input"/>
       <connect from_op="Retrieve Bakery (6)" from_port="output" to_op="Count Sold Items (3)" to_port="example set input"/>
       <connect from_op="Count Sold Items (3)" from_port="example set output" to_op="Sort" to_port="example set input"/>
       <connect from_op="Sort" from_port="example set output" to_op="Rename" to_port="example set input"/>
@@ -641,10 +657,12 @@
       <connect from_op="Filter Weekend" from_port="example set output" to_op="Count Sold Items" to_port="example set input"/>
       <connect from_op="Count Sold Items (2)" from_port="example set output" to_op="Sort (2)" to_port="example set input"/>
       <connect from_op="Sort (2)" from_port="example set output" to_op="Most Sold Items Workday" to_port="example set input"/>
-      <connect from_op="Most Sold Items Workday" from_port="example set output" to_port="result 13"/>
+      <connect from_op="Most Sold Items Workday" from_port="example set output" to_port="result 12"/>
       <connect from_op="Count Sold Items" from_port="example set output" to_op="Sort (4)" to_port="example set input"/>
       <connect from_op="Sort (4)" from_port="example set output" to_op="Most Sold Items Weekend" to_port="example set input"/>
-      <connect from_op="Most Sold Items Weekend" from_port="example set output" to_port="result 14"/>
+      <connect from_op="Most Sold Items Weekend" from_port="example set output" to_port="result 13"/>
+      <connect from_op="Generate Sort" from_port="example set output" to_op="Sort Days" to_port="example set input"/>
+      <connect from_op="Sort Days" from_port="example set output" to_port="result 14"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
